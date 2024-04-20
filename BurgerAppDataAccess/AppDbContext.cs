@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BurgerAppDomain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,8 @@ namespace BurgerAppDataAccess
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer("Server=HASAN_YURDAKUL;Database=BurgerApp;User ID=sa;Password=1q2w3e4r;TrustServerCertificate=True");
         }
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BurgerAppDomain\BurgerAppDomain.csproj" />
+  </ItemGroup>
+
 </Project>
