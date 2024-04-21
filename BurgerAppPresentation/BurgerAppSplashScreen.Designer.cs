@@ -28,7 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            timer_Splash = new System.Windows.Forms.Timer(components);
             SuspendLayout();
+            // 
+            // timer_Splash
+            // 
+            timer_Splash.Interval = 25;
+            timer_Splash.Tick += timer_Splash_Tick;
             // 
             // BurgerAppSplashScreen
             // 
@@ -42,9 +49,12 @@
             Name = "BurgerAppSplashScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BurgerAppSplashScreen";
+            Load += BurgerAppSplashScreen_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timer_Splash;
     }
 }

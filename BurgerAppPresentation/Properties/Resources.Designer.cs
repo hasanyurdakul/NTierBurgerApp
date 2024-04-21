@@ -63,6 +63,16 @@ namespace BurgerAppPresentation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap burger {
+            get {
+                object obj = ResourceManager.GetObject("burger", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SplashScreenImage {
             get {
                 object obj = ResourceManager.GetObject("SplashScreenImage", resourceCulture);
