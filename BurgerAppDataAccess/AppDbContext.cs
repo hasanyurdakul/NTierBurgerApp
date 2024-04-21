@@ -1,4 +1,5 @@
 ﻿using BurgerAppDataAccess.Configurations;
+using BurgerAppDataAccess.SeedData;
 using BurgerAppDomain;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -27,6 +28,7 @@ namespace BurgerAppDataAccess
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerSeedData());
         }
 
        

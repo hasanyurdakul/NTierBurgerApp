@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BurgerAppDataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class ng_1 : Migration
+    public partial class mig_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,7 +51,6 @@ namespace BurgerAppDataAccess.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TotalPrice = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -71,7 +70,9 @@ namespace BurgerAppDataAccess.Migrations
                 columns: table => new
                 {
                     OrderId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

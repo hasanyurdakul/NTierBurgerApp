@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BurgerAppDataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240421010215_ng_1")]
-    partial class ng_1
+    [Migration("20240421164801_mig_2")]
+    partial class mig_2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,6 +53,53 @@ namespace BurgerAppDataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "İstanbul",
+                            Email = "hasan@gmail.com",
+                            FirstName = "Hasan",
+                            LastName = "Yurdakul",
+                            PhoneNumber = "5555555555"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Ankara",
+                            Email = "john@gmail.com",
+                            FirstName = "John",
+                            LastName = "Doe",
+                            PhoneNumber = "5555555555"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "İzmir",
+                            Email = "jane@gmail.com",
+                            FirstName = "Jane",
+                            LastName = "Thompson",
+                            PhoneNumber = "5555555555"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Bursa",
+                            Email = "dana@gmail.com",
+                            FirstName = "Dana",
+                            LastName = "Ahern",
+                            PhoneNumber = "5555555555"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Antalya",
+                            Email = "carol@gmail.com",
+                            FirstName = "Carol",
+                            LastName = "Jackson",
+                            PhoneNumber = "5555555555"
+                        });
                 });
 
             modelBuilder.Entity("BurgerAppDomain.Order", b =>
@@ -73,9 +120,6 @@ namespace BurgerAppDataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
-
                     b.HasKey("OrderId");
 
                     b.HasIndex("CustomerId");
@@ -89,6 +133,12 @@ namespace BurgerAppDataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalPrice")
                         .HasColumnType("int");
 
                     b.HasKey("OrderId", "ProductId");
