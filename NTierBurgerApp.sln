@@ -5,6 +5,7 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurgerAppPresentation", "BurgerAppPresentation\BurgerAppPresentation.csproj", "{C740A364-4942-49C5-84C5-AAA132651307}"
 	ProjectSection(ProjectDependencies) = postProject
+		{0E79DB92-5C63-48B7-ADBC-EA89CB81A27D} = {0E79DB92-5C63-48B7-ADBC-EA89CB81A27D}
 		{B2815537-06BC-4726-BB0C-808936EA3056} = {B2815537-06BC-4726-BB0C-808936EA3056}
 	EndProjectSection
 EndProject

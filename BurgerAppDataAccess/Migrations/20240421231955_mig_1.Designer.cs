@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BurgerAppDataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240421164801_mig_2")]
-    partial class mig_2
+    [Migration("20240421231955_mig_1")]
+    partial class mig_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,11 @@ namespace BurgerAppDataAccess.Migrations
 
             modelBuilder.Entity("BurgerAppDomain.Customer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -50,14 +50,14 @@ namespace BurgerAppDataAccess.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CustomerId");
 
                     b.ToTable("Customers");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            CustomerId = 1,
                             Address = "İstanbul",
                             Email = "hasan@gmail.com",
                             FirstName = "Hasan",
@@ -66,7 +66,7 @@ namespace BurgerAppDataAccess.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            CustomerId = 2,
                             Address = "Ankara",
                             Email = "john@gmail.com",
                             FirstName = "John",
@@ -75,7 +75,7 @@ namespace BurgerAppDataAccess.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            CustomerId = 3,
                             Address = "İzmir",
                             Email = "jane@gmail.com",
                             FirstName = "Jane",
@@ -84,7 +84,7 @@ namespace BurgerAppDataAccess.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            CustomerId = 4,
                             Address = "Bursa",
                             Email = "dana@gmail.com",
                             FirstName = "Dana",
@@ -93,7 +93,7 @@ namespace BurgerAppDataAccess.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            CustomerId = 5,
                             Address = "Antalya",
                             Email = "carol@gmail.com",
                             FirstName = "Carol",
@@ -150,11 +150,11 @@ namespace BurgerAppDataAccess.Migrations
 
             modelBuilder.Entity("BurgerAppDomain.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -170,7 +170,7 @@ namespace BurgerAppDataAccess.Migrations
                     b.Property<int>("UnitPrice")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProductId");
 
                     b.ToTable("Products");
                 });
@@ -178,7 +178,7 @@ namespace BurgerAppDataAccess.Migrations
             modelBuilder.Entity("BurgerAppDomain.Order", b =>
                 {
                     b.HasOne("BurgerAppDomain.Customer", "Customer")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -203,11 +203,6 @@ namespace BurgerAppDataAccess.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("BurgerAppDomain.Customer", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

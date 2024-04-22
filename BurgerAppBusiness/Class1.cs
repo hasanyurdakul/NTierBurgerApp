@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BurgerAppBusiness
 {
-    internal class Class1
+    public class Class1
     {
     }
 }

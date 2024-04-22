@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BurgerAppBusiness\BurgerAppBusiness.csproj" />
+    <ProjectReference Include="..\BurgerAppDataAccess\BurgerAppDataAccess.csproj" />
+    <ProjectReference Include="..\BurgerAppDomain\BurgerAppDomain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
