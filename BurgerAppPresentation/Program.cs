@@ -14,6 +14,9 @@ namespace BurgerAppPresentation
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new BurgerAppDashboard());
+             
         }
+
+      
     }
 }

@@ -515,7 +515,7 @@ namespace BurgerAppDataAccess.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OrderDate")
+                    b.Property<DateTime?>("OrderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
@@ -527,6 +527,358 @@ namespace BurgerAppDataAccess.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderId = 1,
+                            CustomerId = 43,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 2,
+                            CustomerId = 46,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 3,
+                            CustomerId = 18,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 4,
+                            CustomerId = 11,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 5,
+                            CustomerId = 20,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 6,
+                            CustomerId = 19,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 7,
+                            CustomerId = 24,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 8,
+                            CustomerId = 30,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 9,
+                            CustomerId = 12,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 10,
+                            CustomerId = 29,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 11,
+                            CustomerId = 21,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 12,
+                            CustomerId = 42,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 13,
+                            CustomerId = 11,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 14,
+                            CustomerId = 13,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 15,
+                            CustomerId = 34,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 16,
+                            CustomerId = 39,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 17,
+                            CustomerId = 23,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 18,
+                            CustomerId = 33,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 19,
+                            CustomerId = 14,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 20,
+                            CustomerId = 7,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 21,
+                            CustomerId = 36,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 22,
+                            CustomerId = 13,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 23,
+                            CustomerId = 43,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 24,
+                            CustomerId = 39,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 25,
+                            CustomerId = 6,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 26,
+                            CustomerId = 29,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 27,
+                            CustomerId = 39,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 28,
+                            CustomerId = 37,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 29,
+                            CustomerId = 19,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 30,
+                            CustomerId = 18,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 31,
+                            CustomerId = 24,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 32,
+                            CustomerId = 10,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 33,
+                            CustomerId = 50,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 34,
+                            CustomerId = 27,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 35,
+                            CustomerId = 34,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 36,
+                            CustomerId = 41,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 37,
+                            CustomerId = 14,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 38,
+                            CustomerId = 39,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 39,
+                            CustomerId = 26,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 40,
+                            CustomerId = 10,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 41,
+                            CustomerId = 46,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 42,
+                            CustomerId = 39,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 43,
+                            CustomerId = 20,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 44,
+                            CustomerId = 5,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 45,
+                            CustomerId = 35,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 46,
+                            CustomerId = 37,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 47,
+                            CustomerId = 2,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Completed"
+                        },
+                        new
+                        {
+                            OrderId = 48,
+                            CustomerId = 24,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 49,
+                            CustomerId = 24,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        },
+                        new
+                        {
+                            OrderId = 50,
+                            CustomerId = 14,
+                            OrderDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Preparing"
+                        });
                 });
 
             modelBuilder.Entity("BurgerAppDomain.OrderDetail", b =>

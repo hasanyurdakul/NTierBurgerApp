@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             btn_Back = new Button();
             pnl_Title = new Panel();
             lbl_Title = new Label();
-            customerBindingSource = new BindingSource(components);
             dgv_Customers = new DataGridView();
             customerIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -41,14 +40,15 @@
             emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             addressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            customerBindingSource = new BindingSource(components);
             pnl_DataGridView = new Panel();
             btn_AddCustomer = new Button();
             btn_RemoveCustomer = new Button();
             btn_ViewCustomerDetails = new Button();
             btn_EditCustomer = new Button();
             pnl_Title.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Customers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
             pnl_DataGridView.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,7 +62,7 @@
             btn_Back.FlatAppearance.BorderSize = 0;
             btn_Back.FlatStyle = FlatStyle.Flat;
             btn_Back.ForeColor = Color.Coral;
-            btn_Back.Location = new Point(1066, 696);
+            btn_Back.Location = new Point(1066, 608);
             btn_Back.Name = "btn_Back";
             btn_Back.Size = new Size(64, 64);
             btn_Back.TabIndex = 1;
@@ -91,17 +91,13 @@
             lbl_Title.TabIndex = 12;
             lbl_Title.Text = "WISSEN BURGER COMS - CUSTOMERS";
             // 
-            // customerBindingSource
-            // 
-            customerBindingSource.DataSource = typeof(BurgerAppDomain.Customer);
-            // 
             // dgv_Customers
             // 
             dgv_Customers.AllowUserToAddRows = false;
             dgv_Customers.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(14, 14, 14);
-            dgv_Customers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(14, 14, 14);
+            dgv_Customers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             dgv_Customers.AutoGenerateColumns = false;
             dgv_Customers.BorderStyle = BorderStyle.None;
             dgv_Customers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -113,13 +109,12 @@
             dgv_Customers.Name = "dgv_Customers";
             dgv_Customers.ReadOnly = true;
             dgv_Customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_Customers.Size = new Size(658, 745);
+            dgv_Customers.Size = new Size(658, 657);
             dgv_Customers.TabIndex = 3;
             // 
             // customerIdDataGridViewTextBoxColumn
             // 
             customerIdDataGridViewTextBoxColumn.DataPropertyName = "CustomerId";
-            customerIdDataGridViewTextBoxColumn.Frozen = true;
             customerIdDataGridViewTextBoxColumn.HeaderText = "CustomerId";
             customerIdDataGridViewTextBoxColumn.Name = "customerIdDataGridViewTextBoxColumn";
             customerIdDataGridViewTextBoxColumn.ReadOnly = true;
@@ -159,19 +154,22 @@
             addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
             addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // customerBindingSource
+            // 
+            customerBindingSource.DataSource = typeof(BurgerAppDomain.Customer);
+            // 
             // pnl_DataGridView
             // 
             pnl_DataGridView.BackColor = Color.FromArgb(192, 255, 192);
             pnl_DataGridView.Controls.Add(dgv_Customers);
-            pnl_DataGridView.Dock = DockStyle.Left;
             pnl_DataGridView.Location = new Point(0, 27);
             pnl_DataGridView.Name = "pnl_DataGridView";
-            pnl_DataGridView.Size = new Size(658, 745);
+            pnl_DataGridView.Size = new Size(658, 657);
             pnl_DataGridView.TabIndex = 4;
             // 
             // btn_AddCustomer
             // 
-            btn_AddCustomer.Anchor = AnchorStyles.Right;
+            btn_AddCustomer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_AddCustomer.BackColor = Color.FromArgb(255, 60, 47);
             btn_AddCustomer.BackgroundImageLayout = ImageLayout.None;
             btn_AddCustomer.Cursor = Cursors.Hand;
@@ -192,7 +190,7 @@
             // 
             // btn_RemoveCustomer
             // 
-            btn_RemoveCustomer.Anchor = AnchorStyles.Right;
+            btn_RemoveCustomer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_RemoveCustomer.BackColor = Color.FromArgb(255, 60, 47);
             btn_RemoveCustomer.BackgroundImageLayout = ImageLayout.None;
             btn_RemoveCustomer.Cursor = Cursors.Hand;
@@ -213,7 +211,7 @@
             // 
             // btn_ViewCustomerDetails
             // 
-            btn_ViewCustomerDetails.Anchor = AnchorStyles.Right;
+            btn_ViewCustomerDetails.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_ViewCustomerDetails.BackColor = Color.FromArgb(255, 60, 47);
             btn_ViewCustomerDetails.BackgroundImageLayout = ImageLayout.None;
             btn_ViewCustomerDetails.Cursor = Cursors.Hand;
@@ -230,10 +228,11 @@
             btn_ViewCustomerDetails.Text = "View Customer\r\nDetails\r\n";
             btn_ViewCustomerDetails.TextAlign = ContentAlignment.MiddleRight;
             btn_ViewCustomerDetails.UseVisualStyleBackColor = false;
+            btn_ViewCustomerDetails.Click += btn_ViewCustomerDetails_Click;
             // 
             // btn_EditCustomer
             // 
-            btn_EditCustomer.Anchor = AnchorStyles.Right;
+            btn_EditCustomer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_EditCustomer.BackColor = Color.FromArgb(255, 60, 47);
             btn_EditCustomer.BackgroundImageLayout = ImageLayout.None;
             btn_EditCustomer.Cursor = Cursors.Hand;
@@ -257,7 +256,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 14, 14);
-            ClientSize = new Size(1142, 772);
+            ClientSize = new Size(1142, 684);
             Controls.Add(btn_EditCustomer);
             Controls.Add(btn_ViewCustomerDetails);
             Controls.Add(btn_RemoveCustomer);
@@ -272,8 +271,8 @@
             Load += BurgerAppCustomers_Load;
             pnl_Title.ResumeLayout(false);
             pnl_Title.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)customerBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Customers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)customerBindingSource).EndInit();
             pnl_DataGridView.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -283,7 +282,6 @@
         private Button btn_Back;
         private Panel pnl_Title;
         private Label lbl_Title;
-        private BindingSource customerBindingSource;
         private DataGridView dgv_Customers;
         private DataGridViewTextBoxColumn ordersDataGridViewTextBoxColumn;
         private Panel pnl_DataGridView;
@@ -291,6 +289,7 @@
         private Button btn_RemoveCustomer;
         private Button btn_ViewCustomerDetails;
         private Button btn_EditCustomer;
+        private BindingSource customerBindingSource;
         private DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;

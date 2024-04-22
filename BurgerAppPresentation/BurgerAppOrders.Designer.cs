@@ -217,6 +217,7 @@
             btn_Back.Size = new Size(64, 64);
             btn_Back.TabIndex = 9;
             btn_Back.UseVisualStyleBackColor = false;
+            btn_Back.Click += btn_Back_Click;
             // 
             // BurgerAppOrders
             // 

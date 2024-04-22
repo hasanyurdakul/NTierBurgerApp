@@ -29,8 +29,10 @@ namespace BurgerAppDataAccess
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
             modelBuilder.ApplyConfiguration(new CustomerSeedData());
+            modelBuilder.ApplyConfiguration(new OrderSeedData());
+            modelBuilder.ApplyConfiguration(new ProductSeedData());
         }
 
-       
+
     }
 }

@@ -22,7 +22,14 @@ namespace BurgerAppPresentation
         private void BurgerAppOrders_Load(object sender, EventArgs e)
         {
             var orders = _context.Orders.ToList();
-            dgv_Orders.DataSource = orders; 
+            dgv_Orders.DataSource = orders;
+        }
+
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BurgerAppDashboard burgerAppDashboard = new BurgerAppDashboard();   
+            burgerAppDashboard.Show();
         }
     }
 }

@@ -139,6 +139,27 @@
   <data name="Product" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Product.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="p_ChickenTenders" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\p_ChickenTenders.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="p_DoubleBigKing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\p_DoubleBigKing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="p_KingBeef" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\p_KingBeef.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="p_Nuggets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\p_Nuggets.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="p_TexasSmokehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\p_TexasSmokehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="p_TripleWhopper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\p_TripleWhopper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="p_Whopper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\p_Whopper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

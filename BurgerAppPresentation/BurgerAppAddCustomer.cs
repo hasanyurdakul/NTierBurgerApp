@@ -23,10 +23,19 @@ namespace BurgerAppPresentation
         private void btn_Apply_Click(object sender, EventArgs e)
         {
             AddCustomer();
+            SuccessPopUp();
             this.Hide();
             BurgerAppCustomers burgerAppCustomers = new BurgerAppCustomers();
             burgerAppCustomers.Show();
 
+        }
+
+        private void btn_Discard_Click(object sender, EventArgs e)
+        {
+            DiscardPopUp();
+            this.Hide();
+            BurgerAppCustomers burgerAppCustomers = new BurgerAppCustomers();
+            burgerAppCustomers.Show();
         }
 
         public void AddCustomer()
@@ -41,5 +50,16 @@ namespace BurgerAppPresentation
             //MessageBox.Show(_context.Entry(newCustomer).State.ToString());
             _context.SaveChanges();
         }
+
+        private void SuccessPopUp()
+        {
+            MessageBox.Show("New Customer Added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void DiscardPopUp()
+        {
+            MessageBox.Show("Insertion Discarded!", "Cancelled!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+
     }
 }

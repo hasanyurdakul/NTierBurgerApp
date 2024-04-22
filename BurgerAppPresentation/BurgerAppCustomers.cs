@@ -31,7 +31,7 @@ namespace BurgerAppPresentation
         private void BurgerAppCustomers_Load(object sender, EventArgs e)
         {
             var customers = _context.Customers.ToList();
-            dgv_Customers.AutoGenerateColumns = false;
+            dgv_Customers.AutoGenerateColumns = true;
             dgv_Customers.DataSource = customers;
 
 
@@ -45,7 +45,7 @@ namespace BurgerAppPresentation
 
         }
 
-     
+
 
         public void btn_EditCustomer_Click(object sender, EventArgs e)
         {
@@ -74,6 +74,11 @@ namespace BurgerAppPresentation
             BurgerAppRemoveCustomerWarning burgerAppRemoveCustomerWarning = new BurgerAppRemoveCustomerWarning(GetCustomerId());
             burgerAppRemoveCustomerWarning.Show();
             this.Hide();
+        }
+
+        private void btn_ViewCustomerDetails_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

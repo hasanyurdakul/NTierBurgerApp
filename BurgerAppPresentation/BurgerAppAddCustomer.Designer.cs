@@ -197,6 +197,7 @@
             btn_Discard.Size = new Size(150, 80);
             btn_Discard.TabIndex = 35;
             btn_Discard.UseVisualStyleBackColor = false;
+            btn_Discard.Click += btn_Discard_Click;
             // 
             // btn_Apply
             // 
