@@ -44,7 +44,7 @@
             pnl_DataGridView = new Panel();
             btn_AddCustomer = new Button();
             btn_RemoveCustomer = new Button();
-            btn_ViewDetailsCustomer = new Button();
+            btn_ViewCustomerDetails = new Button();
             btn_EditCustomer = new Button();
             pnl_Title.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
@@ -62,7 +62,7 @@
             btn_Back.FlatAppearance.BorderSize = 0;
             btn_Back.FlatStyle = FlatStyle.Flat;
             btn_Back.ForeColor = Color.Coral;
-            btn_Back.Location = new Point(1078, 696);
+            btn_Back.Location = new Point(1066, 696);
             btn_Back.Name = "btn_Back";
             btn_Back.Size = new Size(64, 64);
             btn_Back.TabIndex = 1;
@@ -76,7 +76,7 @@
             pnl_Title.Dock = DockStyle.Top;
             pnl_Title.Location = new Point(0, 0);
             pnl_Title.Name = "pnl_Title";
-            pnl_Title.Size = new Size(1154, 27);
+            pnl_Title.Size = new Size(1142, 27);
             pnl_Title.TabIndex = 2;
             // 
             // lbl_Title
@@ -85,7 +85,7 @@
             lbl_Title.AutoSize = true;
             lbl_Title.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lbl_Title.ForeColor = Color.FromArgb(14, 14, 14);
-            lbl_Title.Location = new Point(808, 1);
+            lbl_Title.Location = new Point(796, 1);
             lbl_Title.Name = "lbl_Title";
             lbl_Title.Size = new Size(346, 25);
             lbl_Title.TabIndex = 12;
@@ -97,11 +97,12 @@
             // 
             // dgv_Customers
             // 
+            dgv_Customers.AllowUserToAddRows = false;
+            dgv_Customers.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.Gainsboro;
             dataGridViewCellStyle1.ForeColor = Color.FromArgb(14, 14, 14);
             dgv_Customers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgv_Customers.AutoGenerateColumns = false;
-            dgv_Customers.BackgroundColor = Color.FromArgb(14, 14, 14);
             dgv_Customers.BorderStyle = BorderStyle.None;
             dgv_Customers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgv_Customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -110,6 +111,7 @@
             dgv_Customers.Dock = DockStyle.Fill;
             dgv_Customers.Location = new Point(0, 0);
             dgv_Customers.Name = "dgv_Customers";
+            dgv_Customers.ReadOnly = true;
             dgv_Customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_Customers.Size = new Size(658, 745);
             dgv_Customers.TabIndex = 3;
@@ -120,36 +122,42 @@
             customerIdDataGridViewTextBoxColumn.Frozen = true;
             customerIdDataGridViewTextBoxColumn.HeaderText = "CustomerId";
             customerIdDataGridViewTextBoxColumn.Name = "customerIdDataGridViewTextBoxColumn";
+            customerIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 
             firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
             firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
             firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            firstNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
             lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
             lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
             lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            lastNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // emailDataGridViewTextBoxColumn
             // 
             emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
             emailDataGridViewTextBoxColumn.HeaderText = "Email";
             emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            emailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // phoneNumberDataGridViewTextBoxColumn
             // 
             phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
             phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
             phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+            phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // addressDataGridViewTextBoxColumn
             // 
             addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
             addressDataGridViewTextBoxColumn.HeaderText = "Address";
             addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pnl_DataGridView
             // 
@@ -173,7 +181,7 @@
             btn_AddCustomer.ForeColor = Color.FromArgb(14, 14, 14);
             btn_AddCustomer.Image = Properties.Resources.Plus;
             btn_AddCustomer.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_AddCustomer.Location = new Point(685, 45);
+            btn_AddCustomer.Location = new Point(673, 54);
             btn_AddCustomer.Name = "btn_AddCustomer";
             btn_AddCustomer.Size = new Size(457, 115);
             btn_AddCustomer.TabIndex = 5;
@@ -194,7 +202,7 @@
             btn_RemoveCustomer.ForeColor = Color.FromArgb(14, 14, 14);
             btn_RemoveCustomer.Image = Properties.Resources.Remove;
             btn_RemoveCustomer.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_RemoveCustomer.Location = new Point(685, 325);
+            btn_RemoveCustomer.Location = new Point(673, 334);
             btn_RemoveCustomer.Name = "btn_RemoveCustomer";
             btn_RemoveCustomer.Size = new Size(457, 115);
             btn_RemoveCustomer.TabIndex = 6;
@@ -203,25 +211,25 @@
             btn_RemoveCustomer.UseVisualStyleBackColor = false;
             btn_RemoveCustomer.Click += btn_RemoveCustomer_Click;
             // 
-            // btn_ViewDetailsCustomer
+            // btn_ViewCustomerDetails
             // 
-            btn_ViewDetailsCustomer.Anchor = AnchorStyles.Right;
-            btn_ViewDetailsCustomer.BackColor = Color.FromArgb(255, 60, 47);
-            btn_ViewDetailsCustomer.BackgroundImageLayout = ImageLayout.None;
-            btn_ViewDetailsCustomer.Cursor = Cursors.Hand;
-            btn_ViewDetailsCustomer.FlatAppearance.BorderSize = 0;
-            btn_ViewDetailsCustomer.FlatStyle = FlatStyle.Flat;
-            btn_ViewDetailsCustomer.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_ViewDetailsCustomer.ForeColor = Color.FromArgb(14, 14, 14);
-            btn_ViewDetailsCustomer.Image = Properties.Resources.View;
-            btn_ViewDetailsCustomer.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_ViewDetailsCustomer.Location = new Point(685, 465);
-            btn_ViewDetailsCustomer.Name = "btn_ViewDetailsCustomer";
-            btn_ViewDetailsCustomer.Size = new Size(457, 115);
-            btn_ViewDetailsCustomer.TabIndex = 7;
-            btn_ViewDetailsCustomer.Text = "View Details\r\n";
-            btn_ViewDetailsCustomer.TextAlign = ContentAlignment.MiddleRight;
-            btn_ViewDetailsCustomer.UseVisualStyleBackColor = false;
+            btn_ViewCustomerDetails.Anchor = AnchorStyles.Right;
+            btn_ViewCustomerDetails.BackColor = Color.FromArgb(255, 60, 47);
+            btn_ViewCustomerDetails.BackgroundImageLayout = ImageLayout.None;
+            btn_ViewCustomerDetails.Cursor = Cursors.Hand;
+            btn_ViewCustomerDetails.FlatAppearance.BorderSize = 0;
+            btn_ViewCustomerDetails.FlatStyle = FlatStyle.Flat;
+            btn_ViewCustomerDetails.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_ViewCustomerDetails.ForeColor = Color.FromArgb(14, 14, 14);
+            btn_ViewCustomerDetails.Image = Properties.Resources.View;
+            btn_ViewCustomerDetails.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_ViewCustomerDetails.Location = new Point(673, 474);
+            btn_ViewCustomerDetails.Name = "btn_ViewCustomerDetails";
+            btn_ViewCustomerDetails.Size = new Size(457, 115);
+            btn_ViewCustomerDetails.TabIndex = 7;
+            btn_ViewCustomerDetails.Text = "View Customer\r\nDetails\r\n";
+            btn_ViewCustomerDetails.TextAlign = ContentAlignment.MiddleRight;
+            btn_ViewCustomerDetails.UseVisualStyleBackColor = false;
             // 
             // btn_EditCustomer
             // 
@@ -235,7 +243,7 @@
             btn_EditCustomer.ForeColor = Color.FromArgb(14, 14, 14);
             btn_EditCustomer.Image = Properties.Resources.Edit;
             btn_EditCustomer.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_EditCustomer.Location = new Point(685, 185);
+            btn_EditCustomer.Location = new Point(673, 194);
             btn_EditCustomer.Name = "btn_EditCustomer";
             btn_EditCustomer.Size = new Size(457, 115);
             btn_EditCustomer.TabIndex = 8;
@@ -249,9 +257,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 14, 14);
-            ClientSize = new Size(1154, 772);
+            ClientSize = new Size(1142, 772);
             Controls.Add(btn_EditCustomer);
-            Controls.Add(btn_ViewDetailsCustomer);
+            Controls.Add(btn_ViewCustomerDetails);
             Controls.Add(btn_RemoveCustomer);
             Controls.Add(btn_AddCustomer);
             Controls.Add(pnl_DataGridView);
@@ -281,7 +289,7 @@
         private Panel pnl_DataGridView;
         private Button btn_AddCustomer;
         private Button btn_RemoveCustomer;
-        private Button btn_ViewDetailsCustomer;
+        private Button btn_ViewCustomerDetails;
         private Button btn_EditCustomer;
         private DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;

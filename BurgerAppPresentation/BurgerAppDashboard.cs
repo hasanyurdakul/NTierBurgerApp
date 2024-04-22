@@ -42,5 +42,13 @@ namespace BurgerAppPresentation
             this.Hide();
             burgerAppCustomers.Show();
         }
+
+        private void btn_Orders_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
+            burgerAppOrders.Show();
+
+        }
     }
 }

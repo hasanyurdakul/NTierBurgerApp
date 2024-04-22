@@ -102,6 +102,7 @@
             btn_Orders.Text = "Orders";
             btn_Orders.TextAlign = ContentAlignment.MiddleRight;
             btn_Orders.UseVisualStyleBackColor = false;
+            btn_Orders.Click += btn_Orders_Click;
             // 
             // btn_Reports
             // 

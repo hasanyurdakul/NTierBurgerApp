@@ -20,21 +20,11 @@ namespace BurgerAppPresentation
 {
     public partial class BurgerAppCustomers : Form
     {
+        AppDbContext _context = new AppDbContext();
+
         public BurgerAppCustomers()
         {
             InitializeComponent();
-
-        }
-
-        AppDbContext _context = new AppDbContext();
-
-
-        private void btn_Back_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            BurgerAppDashboard burgerAppDashboard = new BurgerAppDashboard();
-            burgerAppDashboard.Show();
-
 
         }
 
@@ -46,6 +36,16 @@ namespace BurgerAppPresentation
 
 
         }
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BurgerAppDashboard burgerAppDashboard = new BurgerAppDashboard();
+            burgerAppDashboard.Show();
+
+
+        }
+
+     
 
         public void btn_EditCustomer_Click(object sender, EventArgs e)
         {
