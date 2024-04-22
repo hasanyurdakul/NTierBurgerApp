@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btn_Back = new Button();
             pnl_Title = new Panel();
             lbl_Title = new Label();
@@ -96,20 +97,27 @@
             // 
             // dgv_Customers
             // 
+            dataGridViewCellStyle1.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(14, 14, 14);
+            dgv_Customers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgv_Customers.AutoGenerateColumns = false;
             dgv_Customers.BackgroundColor = Color.FromArgb(14, 14, 14);
+            dgv_Customers.BorderStyle = BorderStyle.None;
+            dgv_Customers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgv_Customers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_Customers.Columns.AddRange(new DataGridViewColumn[] { customerIdDataGridViewTextBoxColumn, firstNameDataGridViewTextBoxColumn, lastNameDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, phoneNumberDataGridViewTextBoxColumn, addressDataGridViewTextBoxColumn });
             dgv_Customers.DataSource = customerBindingSource;
             dgv_Customers.Dock = DockStyle.Fill;
             dgv_Customers.Location = new Point(0, 0);
             dgv_Customers.Name = "dgv_Customers";
-            dgv_Customers.Size = new Size(660, 745);
+            dgv_Customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_Customers.Size = new Size(658, 745);
             dgv_Customers.TabIndex = 3;
             // 
             // customerIdDataGridViewTextBoxColumn
             // 
             customerIdDataGridViewTextBoxColumn.DataPropertyName = "CustomerId";
+            customerIdDataGridViewTextBoxColumn.Frozen = true;
             customerIdDataGridViewTextBoxColumn.HeaderText = "CustomerId";
             customerIdDataGridViewTextBoxColumn.Name = "customerIdDataGridViewTextBoxColumn";
             // 
@@ -150,7 +158,7 @@
             pnl_DataGridView.Dock = DockStyle.Left;
             pnl_DataGridView.Location = new Point(0, 27);
             pnl_DataGridView.Name = "pnl_DataGridView";
-            pnl_DataGridView.Size = new Size(660, 745);
+            pnl_DataGridView.Size = new Size(658, 745);
             pnl_DataGridView.TabIndex = 4;
             // 
             // btn_AddCustomer
@@ -172,6 +180,7 @@
             btn_AddCustomer.Text = "Add New Customer";
             btn_AddCustomer.TextAlign = ContentAlignment.MiddleRight;
             btn_AddCustomer.UseVisualStyleBackColor = false;
+            btn_AddCustomer.Click += btn_AddCustomer_Click;
             // 
             // btn_RemoveCustomer
             // 
@@ -192,6 +201,7 @@
             btn_RemoveCustomer.Text = "Remove Customer\r\nand Related Fields";
             btn_RemoveCustomer.TextAlign = ContentAlignment.MiddleRight;
             btn_RemoveCustomer.UseVisualStyleBackColor = false;
+            btn_RemoveCustomer.Click += btn_RemoveCustomer_Click;
             // 
             // btn_ViewDetailsCustomer
             // 
@@ -268,16 +278,16 @@
         private BindingSource customerBindingSource;
         private DataGridView dgv_Customers;
         private DataGridViewTextBoxColumn ordersDataGridViewTextBoxColumn;
+        private Panel pnl_DataGridView;
+        private Button btn_AddCustomer;
+        private Button btn_RemoveCustomer;
+        private Button btn_ViewDetailsCustomer;
+        private Button btn_EditCustomer;
         private DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-        private Panel pnl_DataGridView;
-        private Button btn_AddCustomer;
-        private Button btn_RemoveCustomer;
-        private Button btn_ViewDetailsCustomer;
-        private Button btn_EditCustomer;
     }
 }

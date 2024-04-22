@@ -42,6 +42,7 @@
             label1 = new Label();
             pnl_Title = new Panel();
             lbl_Title = new Label();
+            btn_Products = new Button();
             ((System.ComponentModel.ISupportInitialize)pbox_Burger).BeginInit();
             pnl_Title.SuspendLayout();
             SuspendLayout();
@@ -56,7 +57,7 @@
             btn_Exit.FlatAppearance.BorderSize = 0;
             btn_Exit.FlatStyle = FlatStyle.Flat;
             btn_Exit.ForeColor = Color.Coral;
-            btn_Exit.Location = new Point(661, 471);
+            btn_Exit.Location = new Point(663, 506);
             btn_Exit.Name = "btn_Exit";
             btn_Exit.Size = new Size(64, 64);
             btn_Exit.TabIndex = 0;
@@ -74,7 +75,7 @@
             btn_Customers.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Customers.ForeColor = Color.FromArgb(14, 14, 14);
             btn_Customers.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Customers.Location = new Point(12, 47);
+            btn_Customers.Location = new Point(9, 47);
             btn_Customers.Name = "btn_Customers";
             btn_Customers.Size = new Size(290, 95);
             btn_Customers.TabIndex = 1;
@@ -94,7 +95,7 @@
             btn_Orders.ForeColor = Color.FromArgb(14, 14, 14);
             btn_Orders.Image = (Image)resources.GetObject("btn_Orders.Image");
             btn_Orders.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Orders.Location = new Point(9, 178);
+            btn_Orders.Location = new Point(9, 154);
             btn_Orders.Name = "btn_Orders";
             btn_Orders.Size = new Size(290, 95);
             btn_Orders.TabIndex = 2;
@@ -113,7 +114,7 @@
             btn_Reports.ForeColor = Color.FromArgb(14, 14, 14);
             btn_Reports.Image = (Image)resources.GetObject("btn_Reports.Image");
             btn_Reports.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Reports.Location = new Point(9, 309);
+            btn_Reports.Location = new Point(9, 368);
             btn_Reports.Name = "btn_Reports";
             btn_Reports.Size = new Size(290, 95);
             btn_Reports.TabIndex = 3;
@@ -132,7 +133,7 @@
             btn_Settings.ForeColor = Color.FromArgb(14, 14, 14);
             btn_Settings.Image = (Image)resources.GetObject("btn_Settings.Image");
             btn_Settings.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Settings.Location = new Point(12, 440);
+            btn_Settings.Location = new Point(9, 475);
             btn_Settings.Name = "btn_Settings";
             btn_Settings.Size = new Size(290, 95);
             btn_Settings.TabIndex = 4;
@@ -172,7 +173,7 @@
             // 
             pbox_Burger.BackgroundImage = Properties.Resources.burger;
             pbox_Burger.BackgroundImageLayout = ImageLayout.Zoom;
-            pbox_Burger.Location = new Point(319, 164);
+            pbox_Burger.Location = new Point(317, 185);
             pbox_Burger.Name = "pbox_Burger";
             pbox_Burger.Size = new Size(406, 300);
             pbox_Burger.TabIndex = 8;
@@ -184,7 +185,7 @@
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(130, 138, 149);
             label1.ImageAlign = ContentAlignment.MiddleLeft;
-            label1.Location = new Point(317, 479);
+            label1.Location = new Point(311, 514);
             label1.Name = "label1";
             label1.Size = new Size(346, 56);
             label1.TabIndex = 9;
@@ -212,12 +213,32 @@
             lbl_Title.TabIndex = 11;
             lbl_Title.Text = "WISSEN BURGER COMS";
             // 
+            // btn_Products
+            // 
+            btn_Products.BackColor = Color.FromArgb(255, 60, 47);
+            btn_Products.BackgroundImageLayout = ImageLayout.None;
+            btn_Products.Cursor = Cursors.Hand;
+            btn_Products.FlatAppearance.BorderSize = 0;
+            btn_Products.FlatStyle = FlatStyle.Flat;
+            btn_Products.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Products.ForeColor = Color.FromArgb(14, 14, 14);
+            btn_Products.Image = Properties.Resources.Product;
+            btn_Products.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Products.Location = new Point(9, 261);
+            btn_Products.Name = "btn_Products";
+            btn_Products.Size = new Size(290, 95);
+            btn_Products.TabIndex = 11;
+            btn_Products.Text = "Products";
+            btn_Products.TextAlign = ContentAlignment.MiddleRight;
+            btn_Products.UseVisualStyleBackColor = false;
+            // 
             // BurgerAppDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 14, 14);
-            ClientSize = new Size(739, 552);
+            ClientSize = new Size(739, 592);
+            Controls.Add(btn_Products);
             Controls.Add(btn_Exit);
             Controls.Add(pnl_Title);
             Controls.Add(label1);
@@ -253,5 +274,6 @@
         private Label label1;
         private Panel pnl_Title;
         private Label lbl_Title;
+        private Button btn_Products;
     }
 }

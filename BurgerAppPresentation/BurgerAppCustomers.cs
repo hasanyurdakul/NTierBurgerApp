@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
- 
+
 
 
 using BurgerAppDataAccess;
@@ -23,8 +23,10 @@ namespace BurgerAppPresentation
         public BurgerAppCustomers()
         {
             InitializeComponent();
+
         }
 
+        AppDbContext _context = new AppDbContext();
 
 
         private void btn_Back_Click(object sender, EventArgs e)
@@ -32,14 +34,13 @@ namespace BurgerAppPresentation
             this.Hide();
             BurgerAppDashboard burgerAppDashboard = new BurgerAppDashboard();
             burgerAppDashboard.Show();
-            
+
 
         }
 
         private void BurgerAppCustomers_Load(object sender, EventArgs e)
         {
-            AppDbContext dbContext = new AppDbContext();
-            var customers = dbContext.Customers.ToList();
+            var customers = _context.Customers.ToList();
             dgv_Customers.AutoGenerateColumns = false;
             dgv_Customers.DataSource = customers;
 
@@ -48,11 +49,31 @@ namespace BurgerAppPresentation
 
         public void btn_EditCustomer_Click(object sender, EventArgs e)
         {
-            BurgerAppEditSelectedCustomer burgerAppEditSelectedCustomer = new BurgerAppEditSelectedCustomer();
+            BurgerAppEditSelectedCustomer burgerAppEditSelectedCustomer = new BurgerAppEditSelectedCustomer(GetCustomerId());
             burgerAppEditSelectedCustomer.Show();
             this.Hide();
-             var selectedRow = dgv_Customers.SelectedRows[0];
 
+        }
+
+        public int GetCustomerId()
+        {
+            var selectedRow = dgv_Customers.SelectedRows[0];
+            var customerId = (int)selectedRow.Cells[0].Value;
+            return customerId;
+        }
+
+        private void btn_AddCustomer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BurgerAppAddCustomer burgerAppAddCustomer = new BurgerAppAddCustomer();
+            burgerAppAddCustomer.Show();
+        }
+
+        private void btn_RemoveCustomer_Click(object sender, EventArgs e)
+        {
+            BurgerAppRemoveCustomerWarning burgerAppRemoveCustomerWarning = new BurgerAppRemoveCustomerWarning(GetCustomerId());
+            burgerAppRemoveCustomerWarning.Show();
+            this.Hide();
         }
     }
 }

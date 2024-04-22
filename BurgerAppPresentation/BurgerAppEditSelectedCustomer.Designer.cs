@@ -87,7 +87,7 @@
             tbox_FirstName.Location = new Point(188, 38);
             tbox_FirstName.Name = "tbox_FirstName";
             tbox_FirstName.Size = new Size(131, 35);
-            tbox_FirstName.TabIndex = 14;
+            tbox_FirstName.TabIndex = 1;
             tbox_FirstName.Text = "First Name";
             // 
             // lbl_FirstName
@@ -118,7 +118,7 @@
             tbox_LastName.Location = new Point(188, 93);
             tbox_LastName.Name = "tbox_LastName";
             tbox_LastName.Size = new Size(131, 35);
-            tbox_LastName.TabIndex = 16;
+            tbox_LastName.TabIndex = 2;
             tbox_LastName.Text = "Last Name";
             // 
             // lbl_Email
@@ -138,7 +138,7 @@
             tbox_Email.Location = new Point(188, 148);
             tbox_Email.Name = "tbox_Email";
             tbox_Email.Size = new Size(131, 35);
-            tbox_Email.TabIndex = 18;
+            tbox_Email.TabIndex = 3;
             tbox_Email.Text = "Email";
             // 
             // lbl_PhoneNumber
@@ -170,7 +170,7 @@
             tbox_Adress.Multiline = true;
             tbox_Adress.Name = "tbox_Adress";
             tbox_Adress.Size = new Size(131, 180);
-            tbox_Adress.TabIndex = 22;
+            tbox_Adress.TabIndex = 5;
             tbox_Adress.Text = "Address";
             // 
             // tbox_PhoneNumber
@@ -180,7 +180,7 @@
             tbox_PhoneNumber.Mask = "(599) 000-0000";
             tbox_PhoneNumber.Name = "tbox_PhoneNumber";
             tbox_PhoneNumber.Size = new Size(131, 35);
-            tbox_PhoneNumber.TabIndex = 24;
+            tbox_PhoneNumber.TabIndex = 4;
             // 
             // btn_Apply
             // 
@@ -239,6 +239,7 @@
             Name = "BurgerAppEditSelectedCustomer";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BurgerAppEditSelectedCustomer";
+            Load += BurgerAppEditSelectedCustomer_Load;
             pnl_Title.ResumeLayout(false);
             pnl_Title.PerformLayout();
             ResumeLayout(false);
