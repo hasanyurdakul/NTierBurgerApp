@@ -51,7 +51,7 @@ namespace BurgerAppPresentation
             BurgerAppEditSelectedCustomer burgerAppEditSelectedCustomer = new BurgerAppEditSelectedCustomer();
             burgerAppEditSelectedCustomer.Show();
             this.Hide();
-            // var selectedRow = dgv_Customers.SelectedRows[0];
+             var selectedRow = dgv_Customers.SelectedRows[0];
 
         }
     }
