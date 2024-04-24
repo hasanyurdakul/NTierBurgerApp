@@ -52,11 +52,15 @@
             lbl_OrderId = new Label();
             lbl_OrderIdTitle = new Label();
             imgList_Products = new ImageList(components);
+            pnl_ProductDesc = new Panel();
+            lbl_DescTitle = new Label();
+            rtbox_Desc = new RichTextBox();
             pnl_Title.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbox_ProductImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
             pnl_Sizes.SuspendLayout();
             panel1.SuspendLayout();
+            pnl_ProductDesc.SuspendLayout();
             SuspendLayout();
             // 
             // pnl_Title
@@ -376,12 +380,44 @@
             imgList_Products.ImageSize = new Size(16, 16);
             imgList_Products.TransparentColor = Color.Transparent;
             // 
+            // pnl_ProductDesc
+            // 
+            pnl_ProductDesc.Controls.Add(rtbox_Desc);
+            pnl_ProductDesc.Controls.Add(lbl_DescTitle);
+            pnl_ProductDesc.Location = new Point(247, 41);
+            pnl_ProductDesc.Name = "pnl_ProductDesc";
+            pnl_ProductDesc.Size = new Size(231, 575);
+            pnl_ProductDesc.TabIndex = 19;
+            // 
+            // lbl_DescTitle
+            // 
+            lbl_DescTitle.AutoSize = true;
+            lbl_DescTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lbl_DescTitle.ForeColor = Color.White;
+            lbl_DescTitle.Location = new Point(0, 0);
+            lbl_DescTitle.Name = "lbl_DescTitle";
+            lbl_DescTitle.Size = new Size(171, 32);
+            lbl_DescTitle.TabIndex = 16;
+            lbl_DescTitle.Text = "DESCRIPTION";
+            // 
+            // rtbox_Desc
+            // 
+            rtbox_Desc.BackColor = Color.FromArgb(14, 14, 14);
+            rtbox_Desc.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtbox_Desc.ForeColor = Color.White;
+            rtbox_Desc.Location = new Point(3, 35);
+            rtbox_Desc.Name = "rtbox_Desc";
+            rtbox_Desc.Size = new Size(225, 540);
+            rtbox_Desc.TabIndex = 17;
+            rtbox_Desc.Text = "This is a placeholder text.\n";
+            // 
             // BurgerAppAddOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 14, 14);
             ClientSize = new Size(1023, 628);
+            Controls.Add(pnl_ProductDesc);
             Controls.Add(panel1);
             Controls.Add(pnl_Sizes);
             Controls.Add(cmbox_Products);
@@ -406,6 +442,8 @@
             pnl_Sizes.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            pnl_ProductDesc.ResumeLayout(false);
+            pnl_ProductDesc.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -434,5 +472,8 @@
         private Label lbl_OrderId;
         private Label lbl_OrderIdTitle;
         private ImageList imgList_Products;
+        private Panel pnl_ProductDesc;
+        private RichTextBox rtbox_Desc;
+        private Label lbl_DescTitle;
     }
 }

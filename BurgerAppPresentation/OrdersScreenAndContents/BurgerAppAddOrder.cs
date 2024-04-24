@@ -28,12 +28,14 @@ namespace BurgerAppPresentation
         {
             populateComboBox();
             populateImageList();
-            lbl_OrderId.Text = GenerateNewOrder().OrderId.ToString();
+            var _order = GenerateNewOrder();
+            lbl_OrderId.Text = _order.OrderId.ToString();
         }
 
         private void cmbox_Products_SelectedIndexChanged(object sender, EventArgs e)
         {
             pboxImageChanger();
+            rtboxDescChanger();
         }
         private void btn_Back_Click(object sender, EventArgs e)
         {
@@ -78,27 +80,30 @@ namespace BurgerAppPresentation
                 pbox_ProductImage.Image = pbox_ProductImage.ErrorImage;
             }
         }
+        private void rtboxDescChanger()
+        {
+            if (cmbox_Products.SelectedItem == null)
+            {
+                string placeholderText = "Select an item to view description";
+                rtbox_Desc.Text = placeholderText;
 
-        //public int newOrderIdGenerator()
-        //{
-        //    //  int newOrderId = _context.Orders.LastOrDefault().OrderId
-        //    int lastOrderId = _context.Orders.OrderBy(x=>x.OrderId).Last().OrderId;
-        //    Order _order = new Order();
-        //    _order.CustomerId = 1;
-        //    _context.SaveChanges();
+            }
+            else
+            {
+                string selectedProductName = cmbox_Products.SelectedItem.ToString();
+                var product = _context.Products.Single(x => x.Name == selectedProductName);
+                string productDesc = product.Description;
+                rtbox_Desc.Text = productDesc;
 
-
-        //    return _order.OrderId;
-        //}
-
-
+            }
+        }
         public Order GenerateNewOrder()
         {
             Order _order = new Order()
             {
                 CustomerId = 1,
             };
-            _context.Orders.Add(_order);    
+            _context.Orders.Add(_order);
             _context.SaveChanges();
             return _order;
         }

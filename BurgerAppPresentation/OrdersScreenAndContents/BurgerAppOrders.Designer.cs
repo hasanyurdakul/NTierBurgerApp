@@ -57,7 +57,7 @@
             pnl_Title.Dock = DockStyle.Top;
             pnl_Title.Location = new Point(0, 0);
             pnl_Title.Name = "pnl_Title";
-            pnl_Title.Size = new Size(922, 27);
+            pnl_Title.Size = new Size(926, 27);
             pnl_Title.TabIndex = 3;
             // 
             // lbl_OrdersTitle
