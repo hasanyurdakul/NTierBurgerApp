@@ -109,6 +109,7 @@
             btn_Back.Size = new Size(64, 64);
             btn_Back.TabIndex = 10;
             btn_Back.UseVisualStyleBackColor = false;
+            btn_Back.Click += btn_Back_Click;
             // 
             // lbox_OrderList
             // 
@@ -354,9 +355,9 @@
             lbl_OrderId.ForeColor = Color.White;
             lbl_OrderId.Location = new Point(135, 0);
             lbl_OrderId.Name = "lbl_OrderId";
-            lbl_OrderId.Size = new Size(56, 32);
+            lbl_OrderId.Size = new Size(70, 32);
             lbl_OrderId.TabIndex = 15;
-            lbl_OrderId.Text = "100";
+            lbl_OrderId.Text = "####";
             // 
             // lbl_OrderIdTitle
             // 

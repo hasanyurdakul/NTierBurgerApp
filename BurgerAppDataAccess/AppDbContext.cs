@@ -17,6 +17,8 @@ namespace BurgerAppDataAccess
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Size> Sizes { get; set; }
+        public DbSet<Sauce> Sauces { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,10 +29,13 @@ namespace BurgerAppDataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
             modelBuilder.ApplyConfiguration(new CustomerSeedData());
             modelBuilder.ApplyConfiguration(new OrderSeedData());
             modelBuilder.ApplyConfiguration(new ProductSeedData());
+            modelBuilder.ApplyConfiguration(new SizeSeedData());
+            modelBuilder.ApplyConfiguration(new SauceSeedData());
         }
 
 

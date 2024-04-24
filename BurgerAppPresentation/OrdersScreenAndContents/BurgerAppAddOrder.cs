@@ -1,4 +1,5 @@
 ﻿using BurgerAppDataAccess;
+using BurgerAppDomain;
 using BurgerAppPresentation.Properties;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -23,17 +24,23 @@ namespace BurgerAppPresentation
             InitializeComponent();
         }
 
-        private void BurgerAppAddOrder_Load(object sender, EventArgs e)
+        public void BurgerAppAddOrder_Load(object sender, EventArgs e)
         {
             populateComboBox();
             populateImageList();
+            lbl_OrderId.Text = GenerateNewOrder().OrderId.ToString();
         }
 
         private void cmbox_Products_SelectedIndexChanged(object sender, EventArgs e)
         {
             pboxImageChanger();
         }
-
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
+            burgerAppOrders.Show();
+        }
         private void populateComboBox()
         {
             var productNames = _context.Products.Select(x => x.Name).ToList();
@@ -70,6 +77,30 @@ namespace BurgerAppPresentation
             {
                 pbox_ProductImage.Image = pbox_ProductImage.ErrorImage;
             }
+        }
+
+        //public int newOrderIdGenerator()
+        //{
+        //    //  int newOrderId = _context.Orders.LastOrDefault().OrderId
+        //    int lastOrderId = _context.Orders.OrderBy(x=>x.OrderId).Last().OrderId;
+        //    Order _order = new Order();
+        //    _order.CustomerId = 1;
+        //    _context.SaveChanges();
+
+
+        //    return _order.OrderId;
+        //}
+
+
+        public Order GenerateNewOrder()
+        {
+            Order _order = new Order()
+            {
+                CustomerId = 1,
+            };
+            _context.Orders.Add(_order);    
+            _context.SaveChanges();
+            return _order;
         }
     }
 }

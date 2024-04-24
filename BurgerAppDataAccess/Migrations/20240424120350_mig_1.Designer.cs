@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BurgerAppDataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240423175401_mig_1")]
+    [Migration("20240424120350_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
@@ -515,14 +515,15 @@ namespace BurgerAppDataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("OrderDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderId");
@@ -895,12 +896,21 @@ namespace BurgerAppDataAccess.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
+                    b.Property<int>("SauceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SizeID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("TotalPrice")
                         .HasColumnType("int");
 
                     b.HasKey("OrderId", "ProductId");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("SizeID");
 
                     b.ToTable("OrderDetails");
                 });
@@ -990,13 +1000,83 @@ namespace BurgerAppDataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BurgerAppDomain.Sauce", b =>
+                {
+                    b.Property<int>("SauceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SauceId"));
+
+                    b.Property<int?>("OrderDetailOrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderDetailProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SauceName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SauceId");
+
+                    b.HasIndex("OrderDetailOrderId", "OrderDetailProductId");
+
+                    b.ToTable("Sauces");
+
+                    b.HasData(
+                        new
+                        {
+                            SauceId = 1,
+                            SauceName = "Ketchup"
+                        },
+                        new
+                        {
+                            SauceId = 2,
+                            SauceName = "Mayonnaise"
+                        },
+                        new
+                        {
+                            SauceId = 3,
+                            SauceName = "Mustard"
+                        });
+                });
+
+            modelBuilder.Entity("BurgerAppDomain.Size", b =>
+                {
+                    b.Property<string>("SizeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("PriceDifference")
+                        .HasColumnType("int");
+
+                    b.HasKey("SizeId");
+
+                    b.ToTable("Sizes");
+
+                    b.HasData(
+                        new
+                        {
+                            SizeId = "S",
+                            PriceDifference = 0
+                        },
+                        new
+                        {
+                            SizeId = "M",
+                            PriceDifference = 3
+                        },
+                        new
+                        {
+                            SizeId = "L",
+                            PriceDifference = 5
+                        });
+                });
+
             modelBuilder.Entity("BurgerAppDomain.Order", b =>
                 {
                     b.HasOne("BurgerAppDomain.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });
@@ -1015,9 +1095,29 @@ namespace BurgerAppDataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BurgerAppDomain.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("BurgerAppDomain.Sauce", b =>
+                {
+                    b.HasOne("BurgerAppDomain.OrderDetail", null)
+                        .WithMany("Sauce")
+                        .HasForeignKey("OrderDetailOrderId", "OrderDetailProductId");
+                });
+
+            modelBuilder.Entity("BurgerAppDomain.OrderDetail", b =>
+                {
+                    b.Navigation("Sauce");
                 });
 #pragma warning restore 612, 618
         }

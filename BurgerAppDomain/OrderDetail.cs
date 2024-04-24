@@ -14,6 +14,10 @@ namespace BurgerAppDomain
         public int ProductId { get; set; }
         public Product Product{ get; set; }
         public int Amount { get; set; }
-        public int TotalPrice { get; set; } 
+        public int TotalPrice { get; set; }
+        public string SizeID { get; set; }
+        public Size Size { get; set; }
+        public int SauceId { get; set; }
+        public ICollection<Sauce> Sauce { get; set; }    
     }
 }
