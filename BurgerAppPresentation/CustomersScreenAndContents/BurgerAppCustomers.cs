@@ -33,7 +33,7 @@ namespace BurgerAppPresentation
             var customers = _context.Customers.ToList();
             dgv_Customers.AutoGenerateColumns = true;
             dgv_Customers.DataSource = customers;
-
+            
 
         }
         private void btn_Back_Click(object sender, EventArgs e)
@@ -80,5 +80,21 @@ namespace BurgerAppPresentation
         {
 
         }
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

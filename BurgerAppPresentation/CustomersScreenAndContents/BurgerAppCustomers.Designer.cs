@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btn_Back = new Button();
             pnl_Title = new Panel();
             lbl_Title = new Label();
@@ -95,9 +95,9 @@
             // 
             dgv_Customers.AllowUserToAddRows = false;
             dgv_Customers.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(14, 14, 14);
-            dgv_Customers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(14, 14, 14);
+            dgv_Customers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgv_Customers.AutoGenerateColumns = false;
             dgv_Customers.BorderStyle = BorderStyle.None;
             dgv_Customers.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;

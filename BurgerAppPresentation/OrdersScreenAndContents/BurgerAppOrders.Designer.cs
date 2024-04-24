@@ -161,6 +161,7 @@
             btn_AddOrder.Text = "Add New Order";
             btn_AddOrder.TextAlign = ContentAlignment.MiddleRight;
             btn_AddOrder.UseVisualStyleBackColor = false;
+            btn_AddOrder.Click += btn_AddOrder_Click;
             // 
             // btn_RemoveOrder
             // 

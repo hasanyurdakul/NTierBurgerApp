@@ -927,6 +927,64 @@ namespace BurgerAppDataAccess.Migrations
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            Description = "Double Big King Menu. Comes with french fries and coke!",
+                            Name = "Double Big King",
+                            Stock = 999,
+                            UnitPrice = 123
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            Description = "Texas Smokehouse Menu. Comes with french fries and coke!",
+                            Name = "Texas Smokehouse",
+                            Stock = 999,
+                            UnitPrice = 123
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            Description = "Whopper Menu. Comes with french fries and coke!",
+                            Name = "Whopper",
+                            Stock = 999,
+                            UnitPrice = 123
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            Description = "Triple Whopper Menu. Comes with french fries and coke!",
+                            Name = "Triple Whopper",
+                            Stock = 999,
+                            UnitPrice = 123
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            Description = "King Beef Menu. Comes with french fries and coke!",
+                            Name = "King Beef",
+                            Stock = 999,
+                            UnitPrice = 123
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            Description = "Nuggets Menu. Comes with french fries and coke!",
+                            Name = "Nuggets",
+                            Stock = 999,
+                            UnitPrice = 123
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            Description = "Chicken Tenders Menu. Comes with french fries and coke!",
+                            Name = "Chicken Tenders",
+                            Stock = 999,
+                            UnitPrice = 123
+                        });
                 });
 
             modelBuilder.Entity("BurgerAppDomain.Order", b =>

@@ -28,8 +28,15 @@ namespace BurgerAppPresentation
         private void btn_Back_Click(object sender, EventArgs e)
         {
             this.Hide();
-            BurgerAppDashboard burgerAppDashboard = new BurgerAppDashboard();   
+            BurgerAppDashboard burgerAppDashboard = new BurgerAppDashboard();
             burgerAppDashboard.Show();
+        }
+
+        private void btn_AddOrder_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BurgerAppAddOrder burgerAppAddOrder = new BurgerAppAddOrder();
+            burgerAppAddOrder.Show();   
         }
     }
 }
