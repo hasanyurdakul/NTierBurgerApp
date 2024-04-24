@@ -47,6 +47,19 @@ namespace BurgerAppDataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Sauces",
+                columns: table => new
+                {
+                    SauceId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SauceName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sauces", x => x.SauceId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sizes",
                 columns: table => new
                 {
@@ -84,14 +97,11 @@ namespace BurgerAppDataAccess.Migrations
                 {
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<int>(type: "int", nullable: false),
-                    TotalPrice = table.Column<int>(type: "int", nullable: false),
-                    SizeID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    SauceId = table.Column<int>(type: "int", nullable: false)
+                    SizeId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderDetails", x => new { x.OrderId, x.ProductId });
+                    table.PrimaryKey("PK_OrderDetails", x => new { x.OrderId, x.ProductId, x.SizeId });
                     table.ForeignKey(
                         name: "FK_OrderDetails_Orders_OrderId",
                         column: x => x.OrderId,
@@ -105,31 +115,37 @@ namespace BurgerAppDataAccess.Migrations
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Sizes_SizeID",
-                        column: x => x.SizeID,
+                        name: "FK_OrderDetails_Sizes_SizeId",
+                        column: x => x.SizeId,
                         principalTable: "Sizes",
                         principalColumn: "SizeId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sauces",
+                name: "OrderDetailSauce",
                 columns: table => new
                 {
-                    SauceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SauceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OrderDetailOrderId = table.Column<int>(type: "int", nullable: true),
-                    OrderDetailProductId = table.Column<int>(type: "int", nullable: true)
+                    SauceId = table.Column<int>(type: "int", nullable: false),
+                    OrderDetailsOrderId = table.Column<int>(type: "int", nullable: false),
+                    OrderDetailsProductId = table.Column<int>(type: "int", nullable: false),
+                    OrderDetailsSizeId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sauces", x => x.SauceId);
+                    table.PrimaryKey("PK_OrderDetailSauce", x => new { x.SauceId, x.OrderDetailsOrderId, x.OrderDetailsProductId, x.OrderDetailsSizeId });
                     table.ForeignKey(
-                        name: "FK_Sauces_OrderDetails_OrderDetailOrderId_OrderDetailProductId",
-                        columns: x => new { x.OrderDetailOrderId, x.OrderDetailProductId },
+                        name: "FK_OrderDetailSauce_OrderDetails_OrderDetailsOrderId_OrderDetailsProductId_OrderDetailsSizeId",
+                        columns: x => new { x.OrderDetailsOrderId, x.OrderDetailsProductId, x.OrderDetailsSizeId },
                         principalTable: "OrderDetails",
-                        principalColumns: new[] { "OrderId", "ProductId" });
+                        principalColumns: new[] { "OrderId", "ProductId", "SizeId" },
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderDetailSauce_Sauces_SauceId",
+                        column: x => x.SauceId,
+                        principalTable: "Sauces",
+                        principalColumn: "SauceId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -205,12 +221,12 @@ namespace BurgerAppDataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Sauces",
-                columns: new[] { "SauceId", "OrderDetailOrderId", "OrderDetailProductId", "SauceName" },
+                columns: new[] { "SauceId", "SauceName" },
                 values: new object[,]
                 {
-                    { 1, null, null, "Ketchup" },
-                    { 2, null, null, "Mayonnaise" },
-                    { 3, null, null, "Mustard" }
+                    { 1, "Ketchup" },
+                    { 2, "Mayonnaise" },
+                    { 3, "Mustard" }
                 });
 
             migrationBuilder.InsertData(
@@ -286,29 +302,32 @@ namespace BurgerAppDataAccess.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_SizeID",
+                name: "IX_OrderDetails_SizeId",
                 table: "OrderDetails",
-                column: "SizeID");
+                column: "SizeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderDetailSauce_OrderDetailsOrderId_OrderDetailsProductId_OrderDetailsSizeId",
+                table: "OrderDetailSauce",
+                columns: new[] { "OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CustomerId",
                 table: "Orders",
                 column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sauces_OrderDetailOrderId_OrderDetailProductId",
-                table: "Sauces",
-                columns: new[] { "OrderDetailOrderId", "OrderDetailProductId" });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Sauces");
+                name: "OrderDetailSauce");
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");
+
+            migrationBuilder.DropTable(
+                name: "Sauces");
 
             migrationBuilder.DropTable(
                 name: "Orders");

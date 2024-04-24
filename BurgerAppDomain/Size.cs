@@ -10,5 +10,6 @@ namespace BurgerAppDomain
     {
         public string SizeId {  get; set; }
         public int PriceDifference { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

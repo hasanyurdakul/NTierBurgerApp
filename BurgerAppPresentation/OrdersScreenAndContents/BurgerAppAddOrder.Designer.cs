@@ -38,6 +38,8 @@
             btn_RemoveBasket = new Button();
             btn_ConfirmOrder = new Button();
             pnl_TotalPrice = new Panel();
+            label2 = new Label();
+            label1 = new Label();
             pbox_ProductImage = new PictureBox();
             cmbox_Products = new ComboBox();
             productBindingSource = new BindingSource(components);
@@ -53,9 +55,10 @@
             lbl_OrderIdTitle = new Label();
             imgList_Products = new ImageList(components);
             pnl_ProductDesc = new Panel();
-            lbl_DescTitle = new Label();
             rtbox_Desc = new RichTextBox();
+            lbl_DescTitle = new Label();
             pnl_Title.SuspendLayout();
+            pnl_TotalPrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbox_ProductImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
             pnl_Sizes.SuspendLayout();
@@ -144,6 +147,7 @@
             btn_AddBasket.Text = "Add to\r\nBasket";
             btn_AddBasket.TextAlign = ContentAlignment.MiddleRight;
             btn_AddBasket.UseVisualStyleBackColor = false;
+            btn_AddBasket.Click += btn_AddBasket_Click;
             // 
             // btn_RemoveBasket
             // 
@@ -164,6 +168,7 @@
             btn_RemoveBasket.Text = "Remove From Basket";
             btn_RemoveBasket.TextAlign = ContentAlignment.MiddleRight;
             btn_RemoveBasket.UseVisualStyleBackColor = false;
+            btn_RemoveBasket.Click += btn_RemoveBasket_Click;
             // 
             // btn_ConfirmOrder
             // 
@@ -184,14 +189,39 @@
             btn_ConfirmOrder.Text = "Confirm Order";
             btn_ConfirmOrder.TextAlign = ContentAlignment.BottomCenter;
             btn_ConfirmOrder.UseVisualStyleBackColor = false;
+            btn_ConfirmOrder.Click += btn_ConfirmOrder_Click;
             // 
             // pnl_TotalPrice
             // 
-            pnl_TotalPrice.BackColor = Color.FromArgb(255, 255, 192);
+            pnl_TotalPrice.BackColor = Color.FromArgb(14, 14, 14);
+            pnl_TotalPrice.Controls.Add(label2);
+            pnl_TotalPrice.Controls.Add(label1);
             pnl_TotalPrice.Location = new Point(484, 552);
             pnl_TotalPrice.Name = "pnl_TotalPrice";
             pnl_TotalPrice.Size = new Size(457, 64);
             pnl_TotalPrice.TabIndex = 15;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(219, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(96, 45);
+            label2.TabIndex = 16;
+            label2.Text = "####";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(0, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(223, 45);
+            label1.TabIndex = 18;
+            label1.Text = "TOTAL PRICE:";
             // 
             // pbox_ProductImage
             // 
@@ -292,6 +322,7 @@
             // 
             rb_Small.Appearance = Appearance.Button;
             rb_Small.AutoSize = true;
+            rb_Small.Checked = true;
             rb_Small.Cursor = Cursors.Hand;
             rb_Small.FlatAppearance.BorderColor = Color.FromArgb(255, 60, 47);
             rb_Small.FlatAppearance.BorderSize = 2;
@@ -303,6 +334,7 @@
             rb_Small.Name = "rb_Small";
             rb_Small.Size = new Size(52, 59);
             rb_Small.TabIndex = 0;
+            rb_Small.TabStop = true;
             rb_Small.Text = "S";
             rb_Small.TextAlign = ContentAlignment.MiddleCenter;
             rb_Small.UseVisualStyleBackColor = true;
@@ -389,17 +421,6 @@
             pnl_ProductDesc.Size = new Size(231, 575);
             pnl_ProductDesc.TabIndex = 19;
             // 
-            // lbl_DescTitle
-            // 
-            lbl_DescTitle.AutoSize = true;
-            lbl_DescTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lbl_DescTitle.ForeColor = Color.White;
-            lbl_DescTitle.Location = new Point(0, 0);
-            lbl_DescTitle.Name = "lbl_DescTitle";
-            lbl_DescTitle.Size = new Size(171, 32);
-            lbl_DescTitle.TabIndex = 16;
-            lbl_DescTitle.Text = "DESCRIPTION";
-            // 
             // rtbox_Desc
             // 
             rtbox_Desc.BackColor = Color.FromArgb(14, 14, 14);
@@ -410,6 +431,17 @@
             rtbox_Desc.Size = new Size(225, 540);
             rtbox_Desc.TabIndex = 17;
             rtbox_Desc.Text = "This is a placeholder text.\n";
+            // 
+            // lbl_DescTitle
+            // 
+            lbl_DescTitle.AutoSize = true;
+            lbl_DescTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lbl_DescTitle.ForeColor = Color.White;
+            lbl_DescTitle.Location = new Point(0, 0);
+            lbl_DescTitle.Name = "lbl_DescTitle";
+            lbl_DescTitle.Size = new Size(171, 32);
+            lbl_DescTitle.TabIndex = 16;
+            lbl_DescTitle.Text = "DESCRIPTION";
             // 
             // BurgerAppAddOrder
             // 
@@ -436,6 +468,8 @@
             Load += BurgerAppAddOrder_Load;
             pnl_Title.ResumeLayout(false);
             pnl_Title.PerformLayout();
+            pnl_TotalPrice.ResumeLayout(false);
+            pnl_TotalPrice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbox_ProductImage).EndInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).EndInit();
             pnl_Sizes.ResumeLayout(false);
@@ -475,5 +509,7 @@
         private Panel pnl_ProductDesc;
         private RichTextBox rtbox_Desc;
         private Label lbl_DescTitle;
+        private Label label2;
+        private Label label1;
     }
 }

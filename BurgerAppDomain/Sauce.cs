@@ -10,6 +10,6 @@ namespace BurgerAppDomain
     {
         public int SauceId { get; set; }
         public string SauceName { get; set; }
-
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

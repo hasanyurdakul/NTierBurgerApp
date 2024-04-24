@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using BurgerAppDomain;
@@ -13,7 +14,10 @@ namespace BurgerAppDataAccess.Configurations
         public void Configure(EntityTypeBuilder<OrderDetail> builder)
         {
             //OrderId ve ProductId propertylerini, OrderDetails tablosunda composite key olarak kullanmamızı sağlar.
-            builder.HasKey(od => new { od.OrderId ,od.ProductId});
+            builder.HasKey(od => new { od.OrderId ,od.ProductId,od.SizeId});
+
         }
+        
     }
+    
 }

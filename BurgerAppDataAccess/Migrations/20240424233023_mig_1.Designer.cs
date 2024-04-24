@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BurgerAppDataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240424120350_mig_1")]
+    [Migration("20240424233023_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
@@ -893,24 +893,14 @@ namespace BurgerAppDataAccess.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SauceId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SizeID")
-                        .IsRequired()
+                    b.Property<string>("SizeId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderId", "ProductId");
+                    b.HasKey("OrderId", "ProductId", "SizeId");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("SizeID");
+                    b.HasIndex("SizeId");
 
                     b.ToTable("OrderDetails");
                 });
@@ -1008,19 +998,11 @@ namespace BurgerAppDataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SauceId"));
 
-                    b.Property<int?>("OrderDetailOrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OrderDetailProductId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SauceName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SauceId");
-
-                    b.HasIndex("OrderDetailOrderId", "OrderDetailProductId");
 
                     b.ToTable("Sauces");
 
@@ -1072,6 +1054,27 @@ namespace BurgerAppDataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("OrderDetailSauce", b =>
+                {
+                    b.Property<int>("SauceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderDetailsOrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderDetailsProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OrderDetailsSizeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("SauceId", "OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId");
+
+                    b.HasIndex("OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId");
+
+                    b.ToTable("OrderDetailSauce");
+                });
+
             modelBuilder.Entity("BurgerAppDomain.Order", b =>
                 {
                     b.HasOne("BurgerAppDomain.Customer", "Customer")
@@ -1096,8 +1099,8 @@ namespace BurgerAppDataAccess.Migrations
                         .IsRequired();
 
                     b.HasOne("BurgerAppDomain.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeID")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1108,16 +1111,24 @@ namespace BurgerAppDataAccess.Migrations
                     b.Navigation("Size");
                 });
 
-            modelBuilder.Entity("BurgerAppDomain.Sauce", b =>
+            modelBuilder.Entity("OrderDetailSauce", b =>
                 {
+                    b.HasOne("BurgerAppDomain.Sauce", null)
+                        .WithMany()
+                        .HasForeignKey("SauceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BurgerAppDomain.OrderDetail", null)
-                        .WithMany("Sauce")
-                        .HasForeignKey("OrderDetailOrderId", "OrderDetailProductId");
+                        .WithMany()
+                        .HasForeignKey("OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("BurgerAppDomain.OrderDetail", b =>
+            modelBuilder.Entity("BurgerAppDomain.Size", b =>
                 {
-                    b.Navigation("Sauce");
+                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }
