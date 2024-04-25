@@ -97,7 +97,8 @@ namespace BurgerAppDataAccess.Migrations
                 {
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    SizeId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    SizeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Amount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -126,14 +127,14 @@ namespace BurgerAppDataAccess.Migrations
                 name: "OrderDetailSauce",
                 columns: table => new
                 {
-                    SauceId = table.Column<int>(type: "int", nullable: false),
+                    SaucesSauceId = table.Column<int>(type: "int", nullable: false),
                     OrderDetailsOrderId = table.Column<int>(type: "int", nullable: false),
                     OrderDetailsProductId = table.Column<int>(type: "int", nullable: false),
                     OrderDetailsSizeId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderDetailSauce", x => new { x.SauceId, x.OrderDetailsOrderId, x.OrderDetailsProductId, x.OrderDetailsSizeId });
+                    table.PrimaryKey("PK_OrderDetailSauce", x => new { x.SaucesSauceId, x.OrderDetailsOrderId, x.OrderDetailsProductId, x.OrderDetailsSizeId });
                     table.ForeignKey(
                         name: "FK_OrderDetailSauce_OrderDetails_OrderDetailsOrderId_OrderDetailsProductId_OrderDetailsSizeId",
                         columns: x => new { x.OrderDetailsOrderId, x.OrderDetailsProductId, x.OrderDetailsSizeId },
@@ -141,8 +142,8 @@ namespace BurgerAppDataAccess.Migrations
                         principalColumns: new[] { "OrderId", "ProductId", "SizeId" },
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderDetailSauce_Sauces_SauceId",
-                        column: x => x.SauceId,
+                        name: "FK_OrderDetailSauce_Sauces_SaucesSauceId",
+                        column: x => x.SaucesSauceId,
                         principalTable: "Sauces",
                         principalColumn: "SauceId",
                         onDelete: ReferentialAction.Cascade);

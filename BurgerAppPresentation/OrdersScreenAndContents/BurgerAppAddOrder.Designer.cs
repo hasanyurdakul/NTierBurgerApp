@@ -38,8 +38,8 @@
             btn_RemoveBasket = new Button();
             btn_ConfirmOrder = new Button();
             pnl_TotalPrice = new Panel();
-            label2 = new Label();
-            label1 = new Label();
+            lbl_TotalPrice = new Label();
+            lbl_TotalPriceTitle = new Label();
             pbox_ProductImage = new PictureBox();
             cmbox_Products = new ComboBox();
             productBindingSource = new BindingSource(components);
@@ -50,20 +50,28 @@
             rb_Small = new RadioButton();
             chbox_Mayonnaise = new CheckBox();
             chbox_Ketchup = new CheckBox();
-            panel1 = new Panel();
+            pbl_OrderId = new Panel();
             lbl_OrderId = new Label();
             lbl_OrderIdTitle = new Label();
             imgList_Products = new ImageList(components);
             pnl_ProductDesc = new Panel();
+            numericUpDown1 = new NumericUpDown();
             rtbox_Desc = new RichTextBox();
             lbl_DescTitle = new Label();
+            lv_OrderList = new ListView();
+            productName = new ColumnHeader();
+            size = new ColumnHeader();
+            ketchup = new ColumnHeader();
+            mayonnaise = new ColumnHeader();
+            mustard = new ColumnHeader();
             pnl_Title.SuspendLayout();
             pnl_TotalPrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbox_ProductImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
             pnl_Sizes.SuspendLayout();
-            panel1.SuspendLayout();
+            pbl_OrderId.SuspendLayout();
             pnl_ProductDesc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // pnl_Title
@@ -194,34 +202,34 @@
             // pnl_TotalPrice
             // 
             pnl_TotalPrice.BackColor = Color.FromArgb(14, 14, 14);
-            pnl_TotalPrice.Controls.Add(label2);
-            pnl_TotalPrice.Controls.Add(label1);
+            pnl_TotalPrice.Controls.Add(lbl_TotalPrice);
+            pnl_TotalPrice.Controls.Add(lbl_TotalPriceTitle);
             pnl_TotalPrice.Location = new Point(484, 552);
             pnl_TotalPrice.Name = "pnl_TotalPrice";
             pnl_TotalPrice.Size = new Size(457, 64);
             pnl_TotalPrice.TabIndex = 15;
             // 
-            // label2
+            // lbl_TotalPrice
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(219, 9);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 45);
-            label2.TabIndex = 16;
-            label2.Text = "####";
+            lbl_TotalPrice.AutoSize = true;
+            lbl_TotalPrice.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lbl_TotalPrice.ForeColor = Color.White;
+            lbl_TotalPrice.Location = new Point(219, 9);
+            lbl_TotalPrice.Name = "lbl_TotalPrice";
+            lbl_TotalPrice.Size = new Size(96, 45);
+            lbl_TotalPrice.TabIndex = 16;
+            lbl_TotalPrice.Text = "####";
             // 
-            // label1
+            // lbl_TotalPriceTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(0, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(223, 45);
-            label1.TabIndex = 18;
-            label1.Text = "TOTAL PRICE:";
+            lbl_TotalPriceTitle.AutoSize = true;
+            lbl_TotalPriceTitle.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lbl_TotalPriceTitle.ForeColor = Color.White;
+            lbl_TotalPriceTitle.Location = new Point(0, 9);
+            lbl_TotalPriceTitle.Name = "lbl_TotalPriceTitle";
+            lbl_TotalPriceTitle.Size = new Size(223, 45);
+            lbl_TotalPriceTitle.TabIndex = 18;
+            lbl_TotalPriceTitle.Text = "TOTAL PRICE:";
             // 
             // pbox_ProductImage
             // 
@@ -374,15 +382,15 @@
             chbox_Ketchup.TextAlign = ContentAlignment.MiddleCenter;
             chbox_Ketchup.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // pbl_OrderId
             // 
-            panel1.BackColor = Color.FromArgb(14, 14, 14);
-            panel1.Controls.Add(lbl_OrderId);
-            panel1.Controls.Add(lbl_OrderIdTitle);
-            panel1.Location = new Point(12, 41);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(210, 64);
-            panel1.TabIndex = 16;
+            pbl_OrderId.BackColor = Color.FromArgb(14, 14, 14);
+            pbl_OrderId.Controls.Add(lbl_OrderId);
+            pbl_OrderId.Controls.Add(lbl_OrderIdTitle);
+            pbl_OrderId.Location = new Point(12, 41);
+            pbl_OrderId.Name = "pbl_OrderId";
+            pbl_OrderId.Size = new Size(210, 64);
+            pbl_OrderId.TabIndex = 16;
             // 
             // lbl_OrderId
             // 
@@ -414,12 +422,25 @@
             // 
             // pnl_ProductDesc
             // 
+            pnl_ProductDesc.Controls.Add(numericUpDown1);
             pnl_ProductDesc.Controls.Add(rtbox_Desc);
             pnl_ProductDesc.Controls.Add(lbl_DescTitle);
             pnl_ProductDesc.Location = new Point(247, 41);
             pnl_ProductDesc.Name = "pnl_ProductDesc";
             pnl_ProductDesc.Size = new Size(231, 575);
             pnl_ProductDesc.TabIndex = 19;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.BackColor = Color.FromArgb(14, 14, 14);
+            numericUpDown1.BorderStyle = BorderStyle.None;
+            numericUpDown1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numericUpDown1.ForeColor = Color.White;
+            numericUpDown1.Location = new Point(73, 366);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(52, 35);
+            numericUpDown1.TabIndex = 18;
+            numericUpDown1.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
             // rtbox_Desc
             // 
@@ -443,14 +464,47 @@
             lbl_DescTitle.TabIndex = 16;
             lbl_DescTitle.Text = "DESCRIPTION";
             // 
+            // lv_OrderList
+            // 
+            lv_OrderList.Columns.AddRange(new ColumnHeader[] { productName, size, ketchup, mayonnaise, mustard });
+            lv_OrderList.GridLines = true;
+            lv_OrderList.Location = new Point(484, 41);
+            lv_OrderList.Name = "lv_OrderList";
+            lv_OrderList.Size = new Size(527, 199);
+            lv_OrderList.TabIndex = 20;
+            lv_OrderList.UseCompatibleStateImageBehavior = false;
+            lv_OrderList.View = View.Details;
+            // 
+            // productName
+            // 
+            productName.Text = "Product Name";
+            productName.Width = 100;
+            // 
+            // size
+            // 
+            size.Text = "Size";
+            // 
+            // ketchup
+            // 
+            ketchup.Text = "Sauce";
+            // 
+            // mayonnaise
+            // 
+            mayonnaise.Text = "Sauce";
+            // 
+            // mustard
+            // 
+            mustard.Text = "Sauce";
+            // 
             // BurgerAppAddOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 14, 14);
             ClientSize = new Size(1023, 628);
+            Controls.Add(lv_OrderList);
             Controls.Add(pnl_ProductDesc);
-            Controls.Add(panel1);
+            Controls.Add(pbl_OrderId);
             Controls.Add(pnl_Sizes);
             Controls.Add(cmbox_Products);
             Controls.Add(pbox_ProductImage);
@@ -474,10 +528,11 @@
             ((System.ComponentModel.ISupportInitialize)productBindingSource).EndInit();
             pnl_Sizes.ResumeLayout(false);
             pnl_Sizes.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pbl_OrderId.ResumeLayout(false);
+            pbl_OrderId.PerformLayout();
             pnl_ProductDesc.ResumeLayout(false);
             pnl_ProductDesc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
 
@@ -499,7 +554,7 @@
         private RadioButton rb_Large;
         private RadioButton rb_Medium;
         private RadioButton rb_Small;
-        private Panel panel1;
+        private Panel pbl_OrderId;
         private CheckBox chbox_Mayonnaise;
         private CheckBox chbox_Ketchup;
         private CheckBox chbox_Mustard;
@@ -509,7 +564,14 @@
         private Panel pnl_ProductDesc;
         private RichTextBox rtbox_Desc;
         private Label lbl_DescTitle;
-        private Label label2;
-        private Label label1;
+        private Label lbl_TotalPrice;
+        private Label lbl_TotalPriceTitle;
+        private NumericUpDown numericUpDown1;
+        private ListView lv_OrderList;
+        private ColumnHeader productName;
+        private ColumnHeader size;
+        private ColumnHeader ketchup;
+        private ColumnHeader mayonnaise;
+        private ColumnHeader mustard;
     }
 }

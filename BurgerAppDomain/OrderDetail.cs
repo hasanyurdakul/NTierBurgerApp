@@ -16,6 +16,7 @@ namespace BurgerAppDomain
         public Product Product { get; set; }
         public string SizeId { get; set; }
         public Size Size { get; set; }
-        public ICollection<Sauce> Sauce { get; set; }    
+        public int Amount { get; set; }
+        public ICollection<Sauce> Sauces { get; set; }    
     }
 }

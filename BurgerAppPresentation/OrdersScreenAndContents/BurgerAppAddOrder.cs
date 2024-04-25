@@ -13,12 +13,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace BurgerAppPresentation
 {
     public partial class BurgerAppAddOrder : Form
     {
         AppDbContext _context = new AppDbContext();
+        Order order;
         public BurgerAppAddOrder()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace BurgerAppPresentation
             populateComboBox();
             populateImageList();
             var _order = GenerateNewOrder();
+            order = _order;
             lbl_OrderId.Text = _order.OrderId.ToString();
             cmbox_Products.SelectedItem = cmbox_Products.Items[0];
         }
@@ -44,17 +47,45 @@ namespace BurgerAppPresentation
             BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
             burgerAppOrders.Show();
         }
-        
+
 
         private void btn_AddBasket_Click(object sender, EventArgs e)
         {
-            lboxOrderInserter();
+            var productName = cmbox_Products.SelectedItem.ToString();
+            var productId = _context.Products.Where(x => x.Name == productName).Select(x => x.ProductId).SingleOrDefault();
+            
+            OrderDetail od = new OrderDetail();
+            od.OrderId = order.OrderId;
+            od.ProductId = productId;
+            od.SizeId = selectedSizeGetter();
+            od.Sauces = (ICollection<Sauce>)selectedSaucesGetter();
+            try
+            {
+                _context.OrderDetails.Add(od);
+                _context.SaveChanges();
+
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Test");
+            }
+
+            lboxOrderInserter(od.OrderId, od.ProductId, od.SizeId, od.Sauces);
+
         }
 
 
         private void btn_RemoveBasket_Click(object sender, EventArgs e)
         {
             lboxOrderRemover();
+            string productName = cmbox_Products.SelectedItem.ToString();
+            int orderId = Convert.ToInt32(lbl_OrderId.Text);
+            var product = _context.Products.Where(x => x.Name == productName).FirstOrDefault();
+            var productId = product.ProductId;
+            var deletedOrderDetail = _context.OrderDetails.Where(x => x.OrderId == orderId && x.ProductId==productId).FirstOrDefault();
+            _context.OrderDetails.Remove(deletedOrderDetail);
         }
 
 
@@ -93,45 +124,60 @@ namespace BurgerAppPresentation
             _context.SaveChanges();
             return _order;
         }
-        private void lboxOrderInserter()
+        private void lboxOrderInserter(int OrderId, int ProductId, string SizeId, ICollection<Sauce> Sauces)
         {
-            string selectedProductName = cmbox_Products.SelectedItem.ToString();
-
-            string receiptString = string.Empty;
-            if (cmbox_Products.SelectedItem != null)
+            string selectedSauces = string.Empty;
+            if (chbox_Ketchup.Checked == false && chbox_Mayonnaise.Checked == false && chbox_Mustard.Checked == false)
             {
-                receiptString += selectedProductName;
-
+                selectedSauces = "NONE";
             }
             else
             {
-                MessageBox.Show("Please select a product from the list!");
+                foreach (var sauce in Sauces)
+                {
+                    selectedSauces += $"{sauce.SauceName},";
+                }
             }
-            if (rb_Small.Checked == true)
-            {
-                receiptString += " - Small Size ";
-            }
-            else if (rb_Medium.Checked == true)
-            {
-                receiptString += " - Medium Size ";
-            }
-            else if (rb_Large.Checked == true)
-            {
-                receiptString += " - Large Size ";
-            }
-            if (chbox_Ketchup.Checked == true)
-            {
-                receiptString += " - Ketchup ";
-            }
-            if (chbox_Mayonnaise.Checked == true)
-            {
-                receiptString += " - Mayonnaise ";
-            }
-            if (chbox_Mustard.Checked == true)
-            {
-                receiptString += " - Mustard ";
-            }
-            lbox_OrderList.Items.Add(receiptString);
+            var product = _context.Products.FirstOrDefault(x => x.ProductId == ProductId);
+            var size = _context.Sizes.FirstOrDefault(x => x.SizeId == SizeId);
+
+            string listItem = $"Product: {product.Name}\tSize: {SizeId}\tSelected Sauces: {selectedSauces}";
+            lbox_OrderList.Items.Add(listItem);
+            //string selectedProductName = cmbox_Products.SelectedItem.ToString();
+            //            string receiptString = string.Empty;
+            //if (cmbox_Products.SelectedItem != null)
+            //{
+            //    receiptString += selectedProductName;
+            //                }
+            //else
+            //{
+            //    MessageBox.Show("Please select a product from the list!");
+            //}
+            //if (rb_Small.Checked == true)
+            //{
+            //    receiptString += " - Small Size ";
+            //}
+            //else if (rb_Medium.Checked == true)
+            //{
+            //    receiptString += " - Medium Size ";
+            //}
+            //else if (rb_Large.Checked == true)
+            //{
+            //    receiptString += " - Large Size ";
+            //}
+            //if (chbox_Ketchup.Checked == true)
+            //{
+            //    receiptString += " - Ketchup ";
+            //}
+            //if (chbox_Mayonnaise.Checked == true)
+            //{
+            //    receiptString += " - Mayonnaise ";
+            //}
+            //if (chbox_Mustard.Checked == true)
+            //{
+            //    receiptString += " - Mustard ";
+            //}
+            //lbox_OrderList.Items.Add(receiptString);
         }
         private void lboxOrderRemover()
         {
@@ -142,7 +188,7 @@ namespace BurgerAppPresentation
             }
             else
             {
-                MessageBox.Show("You don't have any orders to remove!");
+                MessageBox.Show("You didn't select any order to remove!");
             }
         }
         private void populateComboBox()
@@ -181,6 +227,48 @@ namespace BurgerAppPresentation
             {
                 pbox_ProductImage.Image = pbox_ProductImage.ErrorImage;
             }
+        }
+        private string selectedSizeGetter()
+        {
+            string selectedSize;
+            switch (true)
+            {
+                case bool _ when rb_Small.Checked:
+                    selectedSize = "S";
+                    return selectedSize;
+
+                case bool _ when rb_Medium.Checked:
+                    selectedSize = "M";
+                    return selectedSize;
+                case bool _ when rb_Large.Checked:
+                    selectedSize = "L";
+                    return selectedSize;
+                default:
+                    return null;
+            }
+
+        }
+        private ICollection selectedSaucesGetter()
+        {
+            List<Sauce> sauceList = new List<Sauce>();
+            if (chbox_Ketchup.Checked == true)
+            {
+                var ketchup = _context.Sauces.FirstOrDefault(x => x.SauceName == chbox_Ketchup.Text);
+                sauceList.Add(ketchup);
+            }
+            if (chbox_Mayonnaise.Checked == true)
+            {
+                var mayonnaise = _context.Sauces.FirstOrDefault(x => x.SauceName == chbox_Mayonnaise.Text);
+                sauceList.Add(mayonnaise);
+
+            }
+            if (chbox_Mustard.Checked == true)
+            {
+                var mustard = _context.Sauces.FirstOrDefault(x => x.SauceName == chbox_Mustard.Text); sauceList.Add(mustard);
+
+
+            }
+            return sauceList;
         }
 
     }

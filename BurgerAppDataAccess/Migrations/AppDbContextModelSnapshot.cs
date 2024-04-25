@@ -893,6 +893,9 @@ namespace BurgerAppDataAccess.Migrations
                     b.Property<string>("SizeId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.HasKey("OrderId", "ProductId", "SizeId");
 
                     b.HasIndex("ProductId");
@@ -1053,7 +1056,7 @@ namespace BurgerAppDataAccess.Migrations
 
             modelBuilder.Entity("OrderDetailSauce", b =>
                 {
-                    b.Property<int>("SauceId")
+                    b.Property<int>("SaucesSauceId")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderDetailsOrderId")
@@ -1065,7 +1068,7 @@ namespace BurgerAppDataAccess.Migrations
                     b.Property<string>("OrderDetailsSizeId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("SauceId", "OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId");
+                    b.HasKey("SaucesSauceId", "OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId");
 
                     b.HasIndex("OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId");
 
@@ -1112,7 +1115,7 @@ namespace BurgerAppDataAccess.Migrations
                 {
                     b.HasOne("BurgerAppDomain.Sauce", null)
                         .WithMany()
-                        .HasForeignKey("SauceId")
+                        .HasForeignKey("SaucesSauceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
