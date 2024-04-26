@@ -1,4 +1,5 @@
 ﻿using BurgerAppDataAccess;
+using BurgerAppPresentation.OrdersScreenAndContents;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace BurgerAppPresentation
 
         private void BurgerAppOrders_Load(object sender, EventArgs e)
         {
-            var orders = _context.Orders.ToList();
+            var orders = _context.Orders.OrderByDescending(x=>x.OrderId).ToList();
             dgv_Orders.DataSource = orders;
         }
 
@@ -35,8 +36,28 @@ namespace BurgerAppPresentation
         private void btn_AddOrder_Click(object sender, EventArgs e)
         {
             this.Hide();
-            BurgerAppAddOrder burgerAppAddOrder = new BurgerAppAddOrder();
-            burgerAppAddOrder.Show();   
+            BurgerAppAskPhoneNumber burgerAppAskPhoneNumber = new BurgerAppAskPhoneNumber();
+            burgerAppAskPhoneNumber.Show(); 
+        }
+
+        private void btn_RemoveOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_ViewOrderDetails_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BurgerAppViewOrderDetails burgerAppViewOrderDetails = new BurgerAppViewOrderDetails();
+            burgerAppViewOrderDetails.Show();
+        }
+
+        private void btn_EditOrderStatus_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            int orderId = int.Parse(dgv_Orders.SelectedCells[0].Value.ToString());
+            BurgerAppEditOrderStatus burgerAppEditOrderStatus = new BurgerAppEditOrderStatus(orderId);
+            burgerAppEditOrderStatus.Show();
         }
     }
 }

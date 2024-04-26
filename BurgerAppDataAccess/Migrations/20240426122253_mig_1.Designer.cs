@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BurgerAppDataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240425134609_mig_1")]
+    [Migration("20240426122253_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
@@ -887,6 +887,15 @@ namespace BurgerAppDataAccess.Migrations
 
             modelBuilder.Entity("BurgerAppDomain.OrderDetail", b =>
                 {
+                    b.Property<int>("OrderDetailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderDetailId"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
@@ -894,12 +903,12 @@ namespace BurgerAppDataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SizeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
+                    b.HasKey("OrderDetailId");
 
-                    b.HasKey("OrderId", "ProductId", "SizeId");
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -1059,21 +1068,15 @@ namespace BurgerAppDataAccess.Migrations
 
             modelBuilder.Entity("OrderDetailSauce", b =>
                 {
+                    b.Property<int>("OrderDetailsOrderDetailId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SaucesSauceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderDetailsOrderId")
-                        .HasColumnType("int");
+                    b.HasKey("OrderDetailsOrderDetailId", "SaucesSauceId");
 
-                    b.Property<int>("OrderDetailsProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("OrderDetailsSizeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("SaucesSauceId", "OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId");
-
-                    b.HasIndex("OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId");
+                    b.HasIndex("SaucesSauceId");
 
                     b.ToTable("OrderDetailSauce");
                 });
@@ -1116,15 +1119,15 @@ namespace BurgerAppDataAccess.Migrations
 
             modelBuilder.Entity("OrderDetailSauce", b =>
                 {
-                    b.HasOne("BurgerAppDomain.Sauce", null)
+                    b.HasOne("BurgerAppDomain.OrderDetail", null)
                         .WithMany()
-                        .HasForeignKey("SaucesSauceId")
+                        .HasForeignKey("OrderDetailsOrderDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BurgerAppDomain.OrderDetail", null)
+                    b.HasOne("BurgerAppDomain.Sauce", null)
                         .WithMany()
-                        .HasForeignKey("OrderDetailsOrderId", "OrderDetailsProductId", "OrderDetailsSizeId")
+                        .HasForeignKey("SaucesSauceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

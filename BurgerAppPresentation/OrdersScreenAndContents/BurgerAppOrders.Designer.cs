@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pnl_Title = new Panel();
             lbl_OrdersTitle = new Label();
             lbl_Title = new Label();
@@ -43,6 +44,7 @@
             btn_RemoveOrder = new Button();
             btn_ViewOrderDetails = new Button();
             btn_Back = new Button();
+            btn_EditOrderStatus = new Button();
             pnl_Title.SuspendLayout();
             pnl_DataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Orders).BeginInit();
@@ -57,7 +59,7 @@
             pnl_Title.Dock = DockStyle.Top;
             pnl_Title.Location = new Point(0, 0);
             pnl_Title.Name = "pnl_Title";
-            pnl_Title.Size = new Size(926, 27);
+            pnl_Title.Size = new Size(922, 27);
             pnl_Title.TabIndex = 3;
             // 
             // lbl_OrdersTitle
@@ -66,7 +68,7 @@
             lbl_OrdersTitle.AutoSize = true;
             lbl_OrdersTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lbl_OrdersTitle.ForeColor = Color.FromArgb(14, 14, 14);
-            lbl_OrdersTitle.Location = new Point(614, 1);
+            lbl_OrdersTitle.Location = new Point(610, 1);
             lbl_OrdersTitle.Name = "lbl_OrdersTitle";
             lbl_OrdersTitle.Size = new Size(308, 25);
             lbl_OrdersTitle.TabIndex = 13;
@@ -78,7 +80,7 @@
             lbl_Title.AutoSize = true;
             lbl_Title.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lbl_Title.ForeColor = Color.FromArgb(14, 14, 14);
-            lbl_Title.Location = new Point(1530, 1);
+            lbl_Title.Location = new Point(1526, 1);
             lbl_Title.Name = "lbl_Title";
             lbl_Title.Size = new Size(346, 25);
             lbl_Title.TabIndex = 12;
@@ -99,14 +101,26 @@
             dgv_Orders.AllowUserToAddRows = false;
             dgv_Orders.AllowUserToDeleteRows = false;
             dgv_Orders.AutoGenerateColumns = false;
+            dgv_Orders.BackgroundColor = Color.FromArgb(14, 14, 14);
             dgv_Orders.BorderStyle = BorderStyle.None;
+            dgv_Orders.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv_Orders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_Orders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_Orders.Columns.AddRange(new DataGridViewColumn[] { orderIdDataGridViewTextBoxColumn, orderDateDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, customerIdDataGridViewTextBoxColumn });
             dgv_Orders.DataSource = orderBindingSource;
             dgv_Orders.Dock = DockStyle.Fill;
             dgv_Orders.Location = new Point(0, 0);
+            dgv_Orders.MultiSelect = false;
             dgv_Orders.Name = "dgv_Orders";
             dgv_Orders.ReadOnly = true;
+            dgv_Orders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_Orders.Size = new Size(441, 745);
             dgv_Orders.TabIndex = 0;
             // 
@@ -175,13 +189,14 @@
             btn_RemoveOrder.ForeColor = Color.FromArgb(14, 14, 14);
             btn_RemoveOrder.Image = Properties.Resources.Remove;
             btn_RemoveOrder.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_RemoveOrder.Location = new Point(453, 187);
+            btn_RemoveOrder.Location = new Point(453, 189);
             btn_RemoveOrder.Name = "btn_RemoveOrder";
             btn_RemoveOrder.Size = new Size(457, 115);
             btn_RemoveOrder.TabIndex = 7;
             btn_RemoveOrder.Text = "Remove Order";
             btn_RemoveOrder.TextAlign = ContentAlignment.MiddleRight;
             btn_RemoveOrder.UseVisualStyleBackColor = false;
+            btn_RemoveOrder.Click += btn_RemoveOrder_Click;
             // 
             // btn_ViewOrderDetails
             // 
@@ -195,13 +210,14 @@
             btn_ViewOrderDetails.ForeColor = Color.FromArgb(14, 14, 14);
             btn_ViewOrderDetails.Image = Properties.Resources.View;
             btn_ViewOrderDetails.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_ViewOrderDetails.Location = new Point(453, 322);
+            btn_ViewOrderDetails.Location = new Point(453, 465);
             btn_ViewOrderDetails.Name = "btn_ViewOrderDetails";
             btn_ViewOrderDetails.Size = new Size(457, 115);
             btn_ViewOrderDetails.TabIndex = 8;
             btn_ViewOrderDetails.Text = "View Order\r\nDetails\r\n";
             btn_ViewOrderDetails.TextAlign = ContentAlignment.MiddleRight;
             btn_ViewOrderDetails.UseVisualStyleBackColor = false;
+            btn_ViewOrderDetails.Click += btn_ViewOrderDetails_Click;
             // 
             // btn_Back
             // 
@@ -220,12 +236,34 @@
             btn_Back.UseVisualStyleBackColor = false;
             btn_Back.Click += btn_Back_Click;
             // 
+            // btn_EditOrderStatus
+            // 
+            btn_EditOrderStatus.Anchor = AnchorStyles.Right;
+            btn_EditOrderStatus.BackColor = Color.FromArgb(255, 60, 47);
+            btn_EditOrderStatus.BackgroundImageLayout = ImageLayout.None;
+            btn_EditOrderStatus.Cursor = Cursors.Hand;
+            btn_EditOrderStatus.FlatAppearance.BorderSize = 0;
+            btn_EditOrderStatus.FlatStyle = FlatStyle.Flat;
+            btn_EditOrderStatus.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_EditOrderStatus.ForeColor = Color.FromArgb(14, 14, 14);
+            btn_EditOrderStatus.Image = Properties.Resources.Edit;
+            btn_EditOrderStatus.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_EditOrderStatus.Location = new Point(453, 327);
+            btn_EditOrderStatus.Name = "btn_EditOrderStatus";
+            btn_EditOrderStatus.Size = new Size(457, 115);
+            btn_EditOrderStatus.TabIndex = 10;
+            btn_EditOrderStatus.Text = "Edit Order Status";
+            btn_EditOrderStatus.TextAlign = ContentAlignment.MiddleRight;
+            btn_EditOrderStatus.UseVisualStyleBackColor = false;
+            btn_EditOrderStatus.Click += btn_EditOrderStatus_Click;
+            // 
             // BurgerAppOrders
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 14, 14);
             ClientSize = new Size(922, 772);
+            Controls.Add(btn_EditOrderStatus);
             Controls.Add(btn_Back);
             Controls.Add(btn_ViewOrderDetails);
             Controls.Add(btn_RemoveOrder);
@@ -261,5 +299,6 @@
         private Button btn_RemoveOrder;
         private Button btn_ViewOrderDetails;
         private Button btn_Back;
+        private Button btn_EditOrderStatus;
     }
 }

@@ -55,15 +55,16 @@
             lbl_OrderIdTitle = new Label();
             imgList_Products = new ImageList(components);
             pnl_ProductDesc = new Panel();
-            numericUpDown1 = new NumericUpDown();
             rtbox_Desc = new RichTextBox();
             lbl_DescTitle = new Label();
             lv_OrderList = new ListView();
             productName = new ColumnHeader();
-            size = new ColumnHeader();
-            ketchup = new ColumnHeader();
-            mayonnaise = new ColumnHeader();
-            mustard = new ColumnHeader();
+            sizeId = new ColumnHeader();
+            sauce1 = new ColumnHeader();
+            sauce2 = new ColumnHeader();
+            sauce3 = new ColumnHeader();
+            lbl_CustomerIdTitle = new Label();
+            lbl_CustomerId = new Label();
             pnl_Title.SuspendLayout();
             pnl_TotalPrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbox_ProductImage).BeginInit();
@@ -71,7 +72,6 @@
             pnl_Sizes.SuspendLayout();
             pbl_OrderId.SuspendLayout();
             pnl_ProductDesc.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // pnl_Title
@@ -385,6 +385,8 @@
             // pbl_OrderId
             // 
             pbl_OrderId.BackColor = Color.FromArgb(14, 14, 14);
+            pbl_OrderId.Controls.Add(lbl_CustomerId);
+            pbl_OrderId.Controls.Add(lbl_CustomerIdTitle);
             pbl_OrderId.Controls.Add(lbl_OrderId);
             pbl_OrderId.Controls.Add(lbl_OrderIdTitle);
             pbl_OrderId.Location = new Point(12, 41);
@@ -395,22 +397,22 @@
             // lbl_OrderId
             // 
             lbl_OrderId.AutoSize = true;
-            lbl_OrderId.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lbl_OrderId.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_OrderId.ForeColor = Color.White;
-            lbl_OrderId.Location = new Point(135, 0);
+            lbl_OrderId.Location = new Point(101, 0);
             lbl_OrderId.Name = "lbl_OrderId";
-            lbl_OrderId.Size = new Size(70, 32);
+            lbl_OrderId.Size = new Size(46, 21);
             lbl_OrderId.TabIndex = 15;
             lbl_OrderId.Text = "####";
             // 
             // lbl_OrderIdTitle
             // 
             lbl_OrderIdTitle.AutoSize = true;
-            lbl_OrderIdTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lbl_OrderIdTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_OrderIdTitle.ForeColor = Color.White;
-            lbl_OrderIdTitle.Location = new Point(0, 0);
+            lbl_OrderIdTitle.Location = new Point(3, 0);
             lbl_OrderIdTitle.Name = "lbl_OrderIdTitle";
-            lbl_OrderIdTitle.Size = new Size(142, 32);
+            lbl_OrderIdTitle.Size = new Size(92, 21);
             lbl_OrderIdTitle.TabIndex = 14;
             lbl_OrderIdTitle.Text = "ORDER ID: ";
             // 
@@ -422,25 +424,12 @@
             // 
             // pnl_ProductDesc
             // 
-            pnl_ProductDesc.Controls.Add(numericUpDown1);
             pnl_ProductDesc.Controls.Add(rtbox_Desc);
             pnl_ProductDesc.Controls.Add(lbl_DescTitle);
             pnl_ProductDesc.Location = new Point(247, 41);
             pnl_ProductDesc.Name = "pnl_ProductDesc";
             pnl_ProductDesc.Size = new Size(231, 575);
             pnl_ProductDesc.TabIndex = 19;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.BackColor = Color.FromArgb(14, 14, 14);
-            numericUpDown1.BorderStyle = BorderStyle.None;
-            numericUpDown1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            numericUpDown1.ForeColor = Color.White;
-            numericUpDown1.Location = new Point(0, 178);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(52, 35);
-            numericUpDown1.TabIndex = 18;
-            numericUpDown1.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
             // rtbox_Desc
             // 
@@ -449,7 +438,7 @@
             rtbox_Desc.ForeColor = Color.White;
             rtbox_Desc.Location = new Point(3, 35);
             rtbox_Desc.Name = "rtbox_Desc";
-            rtbox_Desc.Size = new Size(225, 127);
+            rtbox_Desc.Size = new Size(225, 537);
             rtbox_Desc.TabIndex = 17;
             rtbox_Desc.Text = "This is a placeholder text.\n";
             // 
@@ -466,7 +455,7 @@
             // 
             // lv_OrderList
             // 
-            lv_OrderList.Columns.AddRange(new ColumnHeader[] { productName, size, ketchup, mayonnaise, mustard });
+            lv_OrderList.Columns.AddRange(new ColumnHeader[] { productName, sizeId, sauce1, sauce2, sauce3 });
             lv_OrderList.FullRowSelect = true;
             lv_OrderList.GridLines = true;
             lv_OrderList.HeaderStyle = ColumnHeaderStyle.Nonclickable;
@@ -477,27 +466,59 @@
             lv_OrderList.TabIndex = 20;
             lv_OrderList.UseCompatibleStateImageBehavior = false;
             lv_OrderList.View = View.Details;
+            lv_OrderList.ItemSelectionChanged += lv_OrderList_ItemSelectionChanged;
             // 
             // productName
             // 
+            productName.Tag = "productName";
             productName.Text = "Product Name";
-            productName.Width = 100;
+            productName.Width = 150;
             // 
-            // size
+            // sizeId
             // 
-            size.Text = "Size";
+            sizeId.Tag = "sizeId";
+            sizeId.Text = "Size";
+            sizeId.Width = 35;
             // 
-            // ketchup
+            // sauce1
             // 
-            ketchup.Text = "Sauce";
+            sauce1.Tag = "sauce1";
+            sauce1.Text = "First Sauce";
+            sauce1.Width = 80;
             // 
-            // mayonnaise
+            // sauce2
             // 
-            mayonnaise.Text = "Sauce";
+            sauce2.Tag = "sauce2";
+            sauce2.Text = "Second Sauce";
+            sauce2.Width = 90;
             // 
-            // mustard
+            // sauce3
             // 
-            mustard.Text = "Sauce";
+            sauce3.Tag = "sauce3";
+            sauce3.Text = "Third Sauce";
+            sauce3.Width = 80;
+            // 
+            // lbl_CustomerIdTitle
+            // 
+            lbl_CustomerIdTitle.AutoSize = true;
+            lbl_CustomerIdTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lbl_CustomerIdTitle.ForeColor = Color.White;
+            lbl_CustomerIdTitle.Location = new Point(3, 21);
+            lbl_CustomerIdTitle.Name = "lbl_CustomerIdTitle";
+            lbl_CustomerIdTitle.Size = new Size(120, 21);
+            lbl_CustomerIdTitle.TabIndex = 16;
+            lbl_CustomerIdTitle.Text = "CUSTOMER ID:";
+            // 
+            // lbl_CustomerId
+            // 
+            lbl_CustomerId.AutoSize = true;
+            lbl_CustomerId.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lbl_CustomerId.ForeColor = Color.White;
+            lbl_CustomerId.Location = new Point(135, 21);
+            lbl_CustomerId.Name = "lbl_CustomerId";
+            lbl_CustomerId.Size = new Size(46, 21);
+            lbl_CustomerId.TabIndex = 17;
+            lbl_CustomerId.Text = "####";
             // 
             // BurgerAppAddOrder
             // 
@@ -535,7 +556,6 @@
             pbl_OrderId.PerformLayout();
             pnl_ProductDesc.ResumeLayout(false);
             pnl_ProductDesc.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
 
@@ -569,12 +589,13 @@
         private Label lbl_DescTitle;
         private Label lbl_TotalPrice;
         private Label lbl_TotalPriceTitle;
-        private NumericUpDown numericUpDown1;
         private ListView lv_OrderList;
         private ColumnHeader productName;
-        private ColumnHeader size;
-        private ColumnHeader ketchup;
-        private ColumnHeader mayonnaise;
-        private ColumnHeader mustard;
+        private ColumnHeader sizeId;
+        private ColumnHeader sauce1;
+        private ColumnHeader sauce2;
+        private ColumnHeader sauce3;
+        private Label lbl_CustomerId;
+        private Label lbl_CustomerIdTitle;
     }
 }

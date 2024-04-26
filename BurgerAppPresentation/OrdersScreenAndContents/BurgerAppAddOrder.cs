@@ -21,21 +21,21 @@ namespace BurgerAppPresentation
     public partial class BurgerAppAddOrder : Form
     {
         AppDbContext _context = new AppDbContext();
-        Order order;
-        public BurgerAppAddOrder()
+        Customer _customer;
+        public BurgerAppAddOrder(Customer customer)
         {
             InitializeComponent();
+            _customer = customer;
         }
 
         public void BurgerAppAddOrder_Load(object sender, EventArgs e)
         {
             populateComboBox();
             populateImageList();
-            var _order = GenerateNewOrder();
-            order = _order;
-            lbl_OrderId.Text = _order.OrderId.ToString();
-            cmbox_Products.SelectedItem = cmbox_Products.Items[0];
             removeButtonStateSetter();
+            orderIdSetter();
+            customerIdSetter();
+            cmbox_Products.SelectedItem = cmbox_Products.Items[0];
         }
 
         private void cmbox_Products_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,17 +45,21 @@ namespace BurgerAppPresentation
         }
         private void btn_Back_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
             burgerAppOrders.Show();
         }
 
+        private void lv_OrderList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            removeButtonStateSetter();
+        }
 
         private void btn_AddBasket_Click(object sender, EventArgs e)
         {
             lvOrderInserter();
             removeButtonStateSetter();
-
+            totalPriceCalculator();
         }
 
 
@@ -64,14 +68,14 @@ namespace BurgerAppPresentation
         {
             lvOrderRemover();
             removeButtonStateSetter();
-
-
+            totalPriceCalculator();
         }
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
-
+            dbOrderInserter();
         }
+
 
         private void rtboxDescChanger()
         {
@@ -90,16 +94,7 @@ namespace BurgerAppPresentation
 
             }
         }
-        public Order GenerateNewOrder()
-        {
-            Order _order = new Order()
-            {
-                CustomerId = 1,
-            };
-            _context.Orders.Add(_order);
-            _context.SaveChanges();
-            return _order;
-        }
+        
         private void populateComboBox()
         {
             var productNames = _context.Products.Select(x => x.Name).ToList();
@@ -218,10 +213,40 @@ namespace BurgerAppPresentation
                 throw;
             }
         }
+        private List<Sauce> lvItemSaucesGetter()
+        {
+            List<Sauce> sauceList = new List<Sauce>();
+
+            foreach (ListViewItem item in lv_OrderList.Items)
+            {
+                for (int i = 2; i < 5; i++)
+                {
+
+
+                    try
+                    {
+                        if (item.SubItems[i].Text.Length != 0)
+                        {
+                            var sauceName = item.SubItems[i].Text;
+                            var sauce = _context.Sauces.Single(x => x.SauceName == sauceName);
+                            sauceList.Add(sauce);
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        break;
+                    }
+
+                }
+            }
+
+            return sauceList;
+        }
         private int orderCountGetter()
         {
             int orderListCount = 0;
-            orderListCount = lv_OrderList.Items.Count;
+            orderListCount = lv_OrderList.SelectedItems.Count;
             return orderListCount;
 
         }
@@ -237,5 +262,61 @@ namespace BurgerAppPresentation
                 btn_RemoveBasket.Enabled = true;
             }
         }
+        private void totalPriceCalculator()
+        {
+            int totalPrice = 0;
+
+            foreach (ListViewItem item in lv_OrderList.Items)
+            {
+                Product product = _context.Products.FirstOrDefault(x => x.Name == item.Text);
+                BurgerAppDomain.Size size = _context.Sizes.FirstOrDefault(x => x.SizeId == selectedSizeGetter());
+                int unitPrice = product.UnitPrice;
+                int sizePriceDifference = size.PriceDifference;
+                int lvItemPrice = unitPrice + sizePriceDifference;
+                totalPrice += lvItemPrice;
+            }
+
+            lbl_TotalPrice.Text = totalPrice.ToString();
+
+        }
+        private void orderIdSetter()
+        {
+            var latestOrder = _context.Orders.OrderBy(x => x.OrderId).LastOrDefault();
+            var latestOrderId = latestOrder.OrderId;
+            lbl_OrderId.Text = (latestOrderId += 1).ToString();
+        }
+        private void customerIdSetter()
+        {
+            lbl_CustomerId.Text = _customer.CustomerId.ToString();
+        }
+        private void dbOrderInserter()
+        {
+            Order order = new Order()
+            {
+                CustomerId = _customer.CustomerId,
+                Status = "Preparing"
+            };
+            _context.Orders.Add(order);
+            _context.SaveChanges();
+            foreach (ListViewItem item in lv_OrderList.Items)
+            {
+                var product = _context.Products.FirstOrDefault(x => x.Name == item.Text);
+                var sizeId = item.SubItems[1].Text;
+
+                OrderDetail orderDetail = new OrderDetail();
+
+                orderDetail.OrderId = order.OrderId;
+                orderDetail.ProductId = product.ProductId;
+                orderDetail.SizeId = sizeId;
+                orderDetail.Sauces = lvItemSaucesGetter();
+                _context.OrderDetails.Add(orderDetail);
+            }
+            _context.SaveChanges();
+            MessageBox.Show("Order Created!","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            this.Hide();
+            BurgerAppOrders burgerAppOrders = new BurgerAppOrders();    
+            burgerAppOrders.Show();
+        }
+
     }
 }

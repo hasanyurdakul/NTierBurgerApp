@@ -44,7 +44,6 @@
             pnl_DataGridView = new Panel();
             btn_AddCustomer = new Button();
             btn_RemoveCustomer = new Button();
-            btn_ViewCustomerDetails = new Button();
             btn_EditCustomer = new Button();
             pnl_Title.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Customers).BeginInit();
@@ -62,7 +61,7 @@
             btn_Back.FlatAppearance.BorderSize = 0;
             btn_Back.FlatStyle = FlatStyle.Flat;
             btn_Back.ForeColor = Color.Coral;
-            btn_Back.Location = new Point(1066, 608);
+            btn_Back.Location = new Point(1066, 466);
             btn_Back.Name = "btn_Back";
             btn_Back.Size = new Size(64, 64);
             btn_Back.TabIndex = 1;
@@ -209,27 +208,6 @@
             btn_RemoveCustomer.UseVisualStyleBackColor = false;
             btn_RemoveCustomer.Click += btn_RemoveCustomer_Click;
             // 
-            // btn_ViewCustomerDetails
-            // 
-            btn_ViewCustomerDetails.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_ViewCustomerDetails.BackColor = Color.FromArgb(255, 60, 47);
-            btn_ViewCustomerDetails.BackgroundImageLayout = ImageLayout.None;
-            btn_ViewCustomerDetails.Cursor = Cursors.Hand;
-            btn_ViewCustomerDetails.FlatAppearance.BorderSize = 0;
-            btn_ViewCustomerDetails.FlatStyle = FlatStyle.Flat;
-            btn_ViewCustomerDetails.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_ViewCustomerDetails.ForeColor = Color.FromArgb(14, 14, 14);
-            btn_ViewCustomerDetails.Image = Properties.Resources.View;
-            btn_ViewCustomerDetails.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_ViewCustomerDetails.Location = new Point(673, 474);
-            btn_ViewCustomerDetails.Name = "btn_ViewCustomerDetails";
-            btn_ViewCustomerDetails.Size = new Size(457, 115);
-            btn_ViewCustomerDetails.TabIndex = 7;
-            btn_ViewCustomerDetails.Text = "View Customer\r\nDetails\r\n";
-            btn_ViewCustomerDetails.TextAlign = ContentAlignment.MiddleRight;
-            btn_ViewCustomerDetails.UseVisualStyleBackColor = false;
-            btn_ViewCustomerDetails.Click += btn_ViewCustomerDetails_Click;
-            // 
             // btn_EditCustomer
             // 
             btn_EditCustomer.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -256,9 +234,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(14, 14, 14);
-            ClientSize = new Size(1142, 684);
+            ClientSize = new Size(1142, 542);
             Controls.Add(btn_EditCustomer);
-            Controls.Add(btn_ViewCustomerDetails);
             Controls.Add(btn_RemoveCustomer);
             Controls.Add(btn_AddCustomer);
             Controls.Add(pnl_DataGridView);
@@ -287,7 +264,6 @@
         private Panel pnl_DataGridView;
         private Button btn_AddCustomer;
         private Button btn_RemoveCustomer;
-        private Button btn_ViewCustomerDetails;
         private Button btn_EditCustomer;
         private BindingSource customerBindingSource;
         private DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;

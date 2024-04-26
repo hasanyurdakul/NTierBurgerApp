@@ -14,7 +14,6 @@ namespace BurgerAppDataAccess.Configurations
         public void Configure(EntityTypeBuilder<OrderDetail> builder)
         {
             //OrderId ve ProductId propertylerini, OrderDetails tablosunda composite key olarak kullanmamızı sağlar.
-            builder.HasKey(od => new { od.OrderId ,od.ProductId,od.SizeId});
 
         }
         
