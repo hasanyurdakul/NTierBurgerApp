@@ -1,4 +1,5 @@
 ﻿using BurgerAppDataAccess;
+using BurgerAppDataAccess.Configurations;
 using BurgerAppDomain;
 using BurgerAppPresentation.Properties;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,7 @@ namespace BurgerAppPresentation
             order = _order;
             lbl_OrderId.Text = _order.OrderId.ToString();
             cmbox_Products.SelectedItem = cmbox_Products.Items[0];
+            removeButtonStateSetter();
         }
 
         private void cmbox_Products_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,7 +45,7 @@ namespace BurgerAppPresentation
         }
         private void btn_Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
             burgerAppOrders.Show();
         }
@@ -51,50 +53,24 @@ namespace BurgerAppPresentation
 
         private void btn_AddBasket_Click(object sender, EventArgs e)
         {
-            var productName = cmbox_Products.SelectedItem.ToString();
-            var productId = _context.Products.Where(x => x.Name == productName).Select(x => x.ProductId).SingleOrDefault();
-            
-            OrderDetail od = new OrderDetail();
-            od.OrderId = order.OrderId;
-            od.ProductId = productId;
-            od.SizeId = selectedSizeGetter();
-            od.Sauces = (ICollection<Sauce>)selectedSaucesGetter();
-            try
-            {
-                _context.OrderDetails.Add(od);
-                _context.SaveChanges();
-
-
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Test");
-            }
-
-            lboxOrderInserter(od.OrderId, od.ProductId, od.SizeId, od.Sauces);
+            lvOrderInserter();
+            removeButtonStateSetter();
 
         }
+
 
 
         private void btn_RemoveBasket_Click(object sender, EventArgs e)
         {
-            lboxOrderRemover();
-            string productName = cmbox_Products.SelectedItem.ToString();
-            int orderId = Convert.ToInt32(lbl_OrderId.Text);
-            var product = _context.Products.Where(x => x.Name == productName).FirstOrDefault();
-            var productId = product.ProductId;
-            var deletedOrderDetail = _context.OrderDetails.Where(x => x.OrderId == orderId && x.ProductId==productId).FirstOrDefault();
-            _context.OrderDetails.Remove(deletedOrderDetail);
+            lvOrderRemover();
+            removeButtonStateSetter();
+
+
         }
-
-
 
         private void btn_ConfirmOrder_Click(object sender, EventArgs e)
         {
-            int orderId = Convert.ToInt32(lbl_OrderId.Text);
-            var _order = _context.Orders.Single(x => x.OrderId == orderId);
-            var _orderDetails = _context.OrderDetails.Single(x => x.OrderId == orderId);
+
         }
 
         private void rtboxDescChanger()
@@ -123,73 +99,6 @@ namespace BurgerAppPresentation
             _context.Orders.Add(_order);
             _context.SaveChanges();
             return _order;
-        }
-        private void lboxOrderInserter(int OrderId, int ProductId, string SizeId, ICollection<Sauce> Sauces)
-        {
-            string selectedSauces = string.Empty;
-            if (chbox_Ketchup.Checked == false && chbox_Mayonnaise.Checked == false && chbox_Mustard.Checked == false)
-            {
-                selectedSauces = "NONE";
-            }
-            else
-            {
-                foreach (var sauce in Sauces)
-                {
-                    selectedSauces += $"{sauce.SauceName},";
-                }
-            }
-            var product = _context.Products.FirstOrDefault(x => x.ProductId == ProductId);
-            var size = _context.Sizes.FirstOrDefault(x => x.SizeId == SizeId);
-
-            string listItem = $"Product: {product.Name}\tSize: {SizeId}\tSelected Sauces: {selectedSauces}";
-            lbox_OrderList.Items.Add(listItem);
-            //string selectedProductName = cmbox_Products.SelectedItem.ToString();
-            //            string receiptString = string.Empty;
-            //if (cmbox_Products.SelectedItem != null)
-            //{
-            //    receiptString += selectedProductName;
-            //                }
-            //else
-            //{
-            //    MessageBox.Show("Please select a product from the list!");
-            //}
-            //if (rb_Small.Checked == true)
-            //{
-            //    receiptString += " - Small Size ";
-            //}
-            //else if (rb_Medium.Checked == true)
-            //{
-            //    receiptString += " - Medium Size ";
-            //}
-            //else if (rb_Large.Checked == true)
-            //{
-            //    receiptString += " - Large Size ";
-            //}
-            //if (chbox_Ketchup.Checked == true)
-            //{
-            //    receiptString += " - Ketchup ";
-            //}
-            //if (chbox_Mayonnaise.Checked == true)
-            //{
-            //    receiptString += " - Mayonnaise ";
-            //}
-            //if (chbox_Mustard.Checked == true)
-            //{
-            //    receiptString += " - Mustard ";
-            //}
-            //lbox_OrderList.Items.Add(receiptString);
-        }
-        private void lboxOrderRemover()
-        {
-            if (lbox_OrderList.SelectedItem != null)
-            {
-                var lboxSelectedItem = lbox_OrderList.SelectedItem;
-                lbox_OrderList.Items.Remove(lboxSelectedItem);
-            }
-            else
-            {
-                MessageBox.Show("You didn't select any order to remove!");
-            }
         }
         private void populateComboBox()
         {
@@ -248,7 +157,7 @@ namespace BurgerAppPresentation
             }
 
         }
-        private ICollection selectedSaucesGetter()
+        private List<Sauce> selectedSaucesGetter()
         {
             List<Sauce> sauceList = new List<Sauce>();
             if (chbox_Ketchup.Checked == true)
@@ -270,6 +179,63 @@ namespace BurgerAppPresentation
             }
             return sauceList;
         }
+        private List<string> selectedSaucesNamesGetter(List<Sauce> sauces)
+        {
+            List<string> sauceNames = new List<string>();
 
+            foreach (Sauce sauce in sauces)
+            {
+                sauceNames.Add(sauce.SauceName);
+            }
+            return sauceNames;
+        }
+        private void lvOrderInserter()
+        {
+            var productName = cmbox_Products.SelectedItem.ToString();
+            var sizeId = selectedSizeGetter();
+            var sauces = selectedSaucesGetter();
+            var sauceNames = selectedSaucesNamesGetter(sauces);
+            ListViewItem item = new ListViewItem();
+            item.Text = productName;
+            item.SubItems.Add(sizeId);
+            foreach (var sauceName in sauceNames)
+            {
+                item.SubItems.Add(sauceName);
+
+            }
+            lv_OrderList.Items.Add(item);
+        }
+        private void lvOrderRemover()
+        {
+            try
+            {
+                lv_OrderList.SelectedItems[0].Remove();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You didn't select any order to remove!");
+                throw;
+            }
+        }
+        private int orderCountGetter()
+        {
+            int orderListCount = 0;
+            orderListCount = lv_OrderList.Items.Count;
+            return orderListCount;
+
+        }
+        private void removeButtonStateSetter()
+        {
+            int orderCount = orderCountGetter();
+            if (orderCount == 0)
+            {
+                btn_RemoveBasket.Enabled = false;
+            }
+            else
+            {
+                btn_RemoveBasket.Enabled = true;
+            }
+        }
     }
 }

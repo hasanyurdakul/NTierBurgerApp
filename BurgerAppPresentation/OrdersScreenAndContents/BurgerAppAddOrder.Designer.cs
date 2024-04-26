@@ -267,7 +267,7 @@
             pnl_Sizes.Controls.Add(chbox_Ketchup);
             pnl_Sizes.Location = new Point(-4, 363);
             pnl_Sizes.Name = "pnl_Sizes";
-            pnl_Sizes.Size = new Size(245, 253);
+            pnl_Sizes.Size = new Size(245, 262);
             pnl_Sizes.TabIndex = 18;
             // 
             // chbox_Mustard
@@ -436,7 +436,7 @@
             numericUpDown1.BorderStyle = BorderStyle.None;
             numericUpDown1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             numericUpDown1.ForeColor = Color.White;
-            numericUpDown1.Location = new Point(73, 366);
+            numericUpDown1.Location = new Point(0, 178);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(52, 35);
             numericUpDown1.TabIndex = 18;
@@ -449,7 +449,7 @@
             rtbox_Desc.ForeColor = Color.White;
             rtbox_Desc.Location = new Point(3, 35);
             rtbox_Desc.Name = "rtbox_Desc";
-            rtbox_Desc.Size = new Size(225, 540);
+            rtbox_Desc.Size = new Size(225, 127);
             rtbox_Desc.TabIndex = 17;
             rtbox_Desc.Text = "This is a placeholder text.\n";
             // 
@@ -467,8 +467,11 @@
             // lv_OrderList
             // 
             lv_OrderList.Columns.AddRange(new ColumnHeader[] { productName, size, ketchup, mayonnaise, mustard });
+            lv_OrderList.FullRowSelect = true;
             lv_OrderList.GridLines = true;
+            lv_OrderList.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             lv_OrderList.Location = new Point(484, 41);
+            lv_OrderList.MultiSelect = false;
             lv_OrderList.Name = "lv_OrderList";
             lv_OrderList.Size = new Size(527, 199);
             lv_OrderList.TabIndex = 20;
