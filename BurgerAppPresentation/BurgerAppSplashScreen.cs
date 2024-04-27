@@ -32,8 +32,10 @@ namespace BurgerAppPresentation
             else if(timerCounter==100)
             {
                 timer_Splash.Stop();
-                BurgerAppDashboard burgerAppDashboard = new BurgerAppDashboard();
                 this.Hide();
+                BurgerAppDashboard burgerAppDashboard = new BurgerAppDashboard();
+                BurgerAppBackground burgerAppBackground= new BurgerAppBackground();
+                burgerAppBackground.Show();
                 burgerAppDashboard.Show();
             }
         }

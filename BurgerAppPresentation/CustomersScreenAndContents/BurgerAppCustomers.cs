@@ -30,7 +30,7 @@ namespace BurgerAppPresentation
 
         private void BurgerAppCustomers_Load(object sender, EventArgs e)
         {
-            var customers = _context.Customers.ToList();
+            var customers = _context.Customers.Where(x=>x.isActive==true).ToList();
             dgv_Customers.AutoGenerateColumns = true;
             dgv_Customers.DataSource = customers;
             
@@ -76,10 +76,7 @@ namespace BurgerAppPresentation
             this.Hide();
         }
 
-        private void btn_ViewCustomerDetails_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
 
          

@@ -42,7 +42,9 @@ namespace BurgerAppPresentation
 
         private void btn_RemoveOrder_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            BurgerAppRemoveOrderWarning burgerAppRemoveOrderWarning = new BurgerAppRemoveOrderWarning(GetOrderId());
+            burgerAppRemoveOrderWarning.Show();
         }
 
         private void btn_ViewOrderDetails_Click(object sender, EventArgs e)
@@ -58,6 +60,12 @@ namespace BurgerAppPresentation
             int orderId = int.Parse(dgv_Orders.SelectedCells[0].Value.ToString());
             BurgerAppEditOrderStatus burgerAppEditOrderStatus = new BurgerAppEditOrderStatus(orderId);
             burgerAppEditOrderStatus.Show();
+        }
+        public int GetOrderId()
+        {
+            var selectedRow = dgv_Orders.SelectedRows[0];
+            var orderId = (int)selectedRow.Cells[0].Value;
+            return orderId;
         }
     }
 }

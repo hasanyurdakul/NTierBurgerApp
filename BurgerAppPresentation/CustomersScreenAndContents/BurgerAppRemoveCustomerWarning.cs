@@ -33,6 +33,7 @@ namespace BurgerAppPresentation
         private void BurgerAppRemoveCustomerWarning_Load(object sender, EventArgs e)
         {
             _customer = GetCustomer(_customerId);
+
         }
         private void btn_Discard_Click(object sender, EventArgs e)
         {
@@ -49,7 +50,7 @@ namespace BurgerAppPresentation
             this.Hide();
             BurgerAppCustomers burgerAppCustomers = new BurgerAppCustomers();
             burgerAppCustomers.Show();
-            
+
         }
 
 
@@ -64,12 +65,10 @@ namespace BurgerAppPresentation
 
         public void RemoveCustomer()
         {
-            _context.Customers.Remove(_customer);
-
-            //MessageBox.Show(_context.Entry(_customer).State.ToString());
+            _customer.isActive=false;
             _context.SaveChanges();
         }
 
-        
+
     }
 }

@@ -115,9 +115,9 @@
             lbl_Paragraph.ForeColor = Color.White;
             lbl_Paragraph.Location = new Point(12, 39);
             lbl_Paragraph.Name = "lbl_Paragraph";
-            lbl_Paragraph.Size = new Size(356, 75);
+            lbl_Paragraph.Size = new Size(356, 100);
             lbl_Paragraph.TabIndex = 14;
-            lbl_Paragraph.Text = "ARE YOU SURE YOU WANT TO DELETE \r\nTHE SELECTED ORDER AND ALL\r\nFIELDS RELATED TO IT?\r\n";
+            lbl_Paragraph.Text = "ARE YOU SURE YOU WANT TO DELETE \r\nTHE SELECTED CUSTOMER AND ALL\r\nFIELDS RELATED TO IT?\r\n\r\n";
             lbl_Paragraph.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BurgerAppDataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240426122253_mig_1")]
-    partial class mig_1
+    [Migration("20240427054758_nig_1")]
+    partial class nig_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,9 @@ namespace BurgerAppDataAccess.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isActive")
+                        .HasColumnType("bit");
+
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customers");
@@ -62,7 +65,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "john.doe@example.com",
                             FirstName = "John",
                             LastName = "Doe",
-                            PhoneNumber = "(555) 123-4567"
+                            PhoneNumber = "(555) 123-4567",
+                            isActive = true
                         },
                         new
                         {
@@ -71,7 +75,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "emily.smith@example.com",
                             FirstName = "Emily",
                             LastName = "Smith",
-                            PhoneNumber = "(555) 234-5678"
+                            PhoneNumber = "(555) 234-5678",
+                            isActive = true
                         },
                         new
                         {
@@ -80,7 +85,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "michael.johnson@example.com",
                             FirstName = "Michael",
                             LastName = "Johnson",
-                            PhoneNumber = "(555) 345-6789"
+                            PhoneNumber = "(555) 345-6789",
+                            isActive = true
                         },
                         new
                         {
@@ -89,7 +95,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "sarah.williams@example.com",
                             FirstName = "Sarah",
                             LastName = "Williams",
-                            PhoneNumber = "(555) 456-7890"
+                            PhoneNumber = "(555) 456-7890",
+                            isActive = true
                         },
                         new
                         {
@@ -98,7 +105,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "christopher.brown@example.com",
                             FirstName = "Christopher",
                             LastName = "Brown",
-                            PhoneNumber = "(555) 567-8901"
+                            PhoneNumber = "(555) 567-8901",
+                            isActive = true
                         },
                         new
                         {
@@ -107,7 +115,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "jessica.davis@example.com",
                             FirstName = "Jessica",
                             LastName = "Davis",
-                            PhoneNumber = "(555) 678-9012"
+                            PhoneNumber = "(555) 678-9012",
+                            isActive = true
                         },
                         new
                         {
@@ -116,7 +125,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "matthew.miller@example.com",
                             FirstName = "Matthew",
                             LastName = "Miller",
-                            PhoneNumber = "(555) 789-0123"
+                            PhoneNumber = "(555) 789-0123",
+                            isActive = true
                         },
                         new
                         {
@@ -125,7 +135,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "ashley.wilson@example.com",
                             FirstName = "Ashley",
                             LastName = "Wilson",
-                            PhoneNumber = "(555) 890-1234"
+                            PhoneNumber = "(555) 890-1234",
+                            isActive = true
                         },
                         new
                         {
@@ -134,7 +145,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "daniel.moore@example.com",
                             FirstName = "Daniel",
                             LastName = "Moore",
-                            PhoneNumber = "(555) 901-2345"
+                            PhoneNumber = "(555) 901-2345",
+                            isActive = true
                         },
                         new
                         {
@@ -143,7 +155,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "amanda.taylor@example.com",
                             FirstName = "Amanda",
                             LastName = "Taylor",
-                            PhoneNumber = "(555) 012-3456"
+                            PhoneNumber = "(555) 012-3456",
+                            isActive = true
                         },
                         new
                         {
@@ -152,7 +165,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "robert.martinez@example.com",
                             FirstName = "Robert",
                             LastName = "Martinez",
-                            PhoneNumber = "(555) 123-4567"
+                            PhoneNumber = "(555) 123-4567",
+                            isActive = true
                         },
                         new
                         {
@@ -161,7 +175,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "jennifer.hernandez@example.com",
                             FirstName = "Jennifer",
                             LastName = "Hernandez",
-                            PhoneNumber = "(555) 234-5678"
+                            PhoneNumber = "(555) 234-5678",
+                            isActive = true
                         },
                         new
                         {
@@ -170,7 +185,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "james.lopez@example.com",
                             FirstName = "James",
                             LastName = "Lopez",
-                            PhoneNumber = "(555) 345-6789"
+                            PhoneNumber = "(555) 345-6789",
+                            isActive = true
                         },
                         new
                         {
@@ -179,7 +195,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "mary.gonzalez@example.com",
                             FirstName = "Mary",
                             LastName = "Gonzalez",
-                            PhoneNumber = "(555) 456-7890"
+                            PhoneNumber = "(555) 456-7890",
+                            isActive = true
                         },
                         new
                         {
@@ -188,7 +205,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "david.wilson@example.com",
                             FirstName = "David",
                             LastName = "Wilson",
-                            PhoneNumber = "(555) 567-8901"
+                            PhoneNumber = "(555) 567-8901",
+                            isActive = true
                         },
                         new
                         {
@@ -197,7 +215,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "maria.taylor@example.com",
                             FirstName = "Maria",
                             LastName = "Taylor",
-                            PhoneNumber = "(555) 678-9012"
+                            PhoneNumber = "(555) 678-9012",
+                            isActive = true
                         },
                         new
                         {
@@ -206,7 +225,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "charles.martinez@example.com",
                             FirstName = "Charles",
                             LastName = "Martinez",
-                            PhoneNumber = "(555) 789-0123"
+                            PhoneNumber = "(555) 789-0123",
+                            isActive = true
                         },
                         new
                         {
@@ -215,7 +235,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "patricia.hernandez@example.com",
                             FirstName = "Patricia",
                             LastName = "Hernandez",
-                            PhoneNumber = "(555) 890-1234"
+                            PhoneNumber = "(555) 890-1234",
+                            isActive = true
                         },
                         new
                         {
@@ -224,7 +245,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "richard.lopez@example.com",
                             FirstName = "Richard",
                             LastName = "Lopez",
-                            PhoneNumber = "(555) 901-2345"
+                            PhoneNumber = "(555) 901-2345",
+                            isActive = true
                         },
                         new
                         {
@@ -233,7 +255,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "linda.gonzalez@example.com",
                             FirstName = "Linda",
                             LastName = "Gonzalez",
-                            PhoneNumber = "(555) 012-3456"
+                            PhoneNumber = "(555) 012-3456",
+                            isActive = true
                         },
                         new
                         {
@@ -242,7 +265,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "thomas.martinez@example.com",
                             FirstName = "Thomas",
                             LastName = "Martinez",
-                            PhoneNumber = "(555) 123-4567"
+                            PhoneNumber = "(555) 123-4567",
+                            isActive = true
                         },
                         new
                         {
@@ -251,7 +275,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "karen.hernandez@example.com",
                             FirstName = "Karen",
                             LastName = "Hernandez",
-                            PhoneNumber = "(555) 234-5678"
+                            PhoneNumber = "(555) 234-5678",
+                            isActive = true
                         },
                         new
                         {
@@ -260,7 +285,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "steven.lopez@example.com",
                             FirstName = "Steven",
                             LastName = "Lopez",
-                            PhoneNumber = "(555) 345-6789"
+                            PhoneNumber = "(555) 345-6789",
+                            isActive = true
                         },
                         new
                         {
@@ -269,7 +295,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "barbara.gonzalez@example.com",
                             FirstName = "Barbara",
                             LastName = "Gonzalez",
-                            PhoneNumber = "(555) 456-7890"
+                            PhoneNumber = "(555) 456-7890",
+                            isActive = true
                         },
                         new
                         {
@@ -278,7 +305,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "joseph.taylor@example.com",
                             FirstName = "Joseph",
                             LastName = "Taylor",
-                            PhoneNumber = "(555) 567-8901"
+                            PhoneNumber = "(555) 567-8901",
+                            isActive = true
                         },
                         new
                         {
@@ -287,7 +315,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "donna.martinez@example.com",
                             FirstName = "Donna",
                             LastName = "Martinez",
-                            PhoneNumber = "(555) 678-9012"
+                            PhoneNumber = "(555) 678-9012",
+                            isActive = true
                         },
                         new
                         {
@@ -296,7 +325,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "ronald.hernandez@example.com",
                             FirstName = "Ronald",
                             LastName = "Hernandez",
-                            PhoneNumber = "(555) 789-0123"
+                            PhoneNumber = "(555) 789-0123",
+                            isActive = true
                         },
                         new
                         {
@@ -305,7 +335,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "laura.lopez@example.com",
                             FirstName = "Laura",
                             LastName = "Lopez",
-                            PhoneNumber = "(555) 890-1234"
+                            PhoneNumber = "(555) 890-1234",
+                            isActive = true
                         },
                         new
                         {
@@ -314,7 +345,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "kenneth.gonzalez@example.com",
                             FirstName = "Kenneth",
                             LastName = "Gonzalez",
-                            PhoneNumber = "(555) 901-2345"
+                            PhoneNumber = "(555) 901-2345",
+                            isActive = true
                         },
                         new
                         {
@@ -323,7 +355,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "margaret.wilson@example.com",
                             FirstName = "Margaret",
                             LastName = "Wilson",
-                            PhoneNumber = "(555) 012-3456"
+                            PhoneNumber = "(555) 012-3456",
+                            isActive = true
                         },
                         new
                         {
@@ -332,7 +365,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "karen.martinez@example.com",
                             FirstName = "Karen",
                             LastName = "Martinez",
-                            PhoneNumber = "(555) 123-4567"
+                            PhoneNumber = "(555) 123-4567",
+                            isActive = true
                         },
                         new
                         {
@@ -341,7 +375,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "anthony.hernandez@example.com",
                             FirstName = "Anthony",
                             LastName = "Hernandez",
-                            PhoneNumber = "(555) 234-5678"
+                            PhoneNumber = "(555) 234-5678",
+                            isActive = true
                         },
                         new
                         {
@@ -350,7 +385,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "sharon.lopez@example.com",
                             FirstName = "Sharon",
                             LastName = "Lopez",
-                            PhoneNumber = "(555) 345-6789"
+                            PhoneNumber = "(555) 345-6789",
+                            isActive = true
                         },
                         new
                         {
@@ -359,7 +395,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "gary.gonzalez@example.com",
                             FirstName = "Gary",
                             LastName = "Gonzalez",
-                            PhoneNumber = "(555) 456-7890"
+                            PhoneNumber = "(555) 456-7890",
+                            isActive = true
                         },
                         new
                         {
@@ -368,7 +405,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "deborah.taylor@example.com",
                             FirstName = "Deborah",
                             LastName = "Taylor",
-                            PhoneNumber = "(555) 567-8901"
+                            PhoneNumber = "(555) 567-8901",
+                            isActive = true
                         },
                         new
                         {
@@ -377,7 +415,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "edward.martinez@example.com",
                             FirstName = "Edward",
                             LastName = "Martinez",
-                            PhoneNumber = "(555) 678-9012"
+                            PhoneNumber = "(555) 678-9012",
+                            isActive = true
                         },
                         new
                         {
@@ -386,7 +425,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "kimberly.hernandez@example.com",
                             FirstName = "Kimberly",
                             LastName = "Hernandez",
-                            PhoneNumber = "(555) 789-0123"
+                            PhoneNumber = "(555) 789-0123",
+                            isActive = true
                         },
                         new
                         {
@@ -395,7 +435,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "steven.lopez@example.com",
                             FirstName = "Steven",
                             LastName = "Lopez",
-                            PhoneNumber = "(555) 890-1234"
+                            PhoneNumber = "(555) 890-1234",
+                            isActive = true
                         },
                         new
                         {
@@ -404,7 +445,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "susan.gonzalez@example.com",
                             FirstName = "Susan",
                             LastName = "Gonzalez",
-                            PhoneNumber = "(555) 901-2345"
+                            PhoneNumber = "(555) 901-2345",
+                            isActive = true
                         },
                         new
                         {
@@ -413,7 +455,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "brian.wilson@example.com",
                             FirstName = "Brian",
                             LastName = "Wilson",
-                            PhoneNumber = "(555) 012-3456"
+                            PhoneNumber = "(555) 012-3456",
+                            isActive = true
                         },
                         new
                         {
@@ -422,7 +465,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "elizabeth.martinez@example.com",
                             FirstName = "Elizabeth",
                             LastName = "Martinez",
-                            PhoneNumber = "(555) 123-4567"
+                            PhoneNumber = "(555) 123-4567",
+                            isActive = true
                         },
                         new
                         {
@@ -431,7 +475,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "charles.hernandez@example.com",
                             FirstName = "Charles",
                             LastName = "Hernandez",
-                            PhoneNumber = "(555) 234-5678"
+                            PhoneNumber = "(555) 234-5678",
+                            isActive = true
                         },
                         new
                         {
@@ -440,7 +485,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "donna.lopez@example.com",
                             FirstName = "Donna",
                             LastName = "Lopez",
-                            PhoneNumber = "(555) 345-6789"
+                            PhoneNumber = "(555) 345-6789",
+                            isActive = true
                         },
                         new
                         {
@@ -449,7 +495,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "david.gonzalez@example.com",
                             FirstName = "David",
                             LastName = "Gonzalez",
-                            PhoneNumber = "(555) 456-7890"
+                            PhoneNumber = "(555) 456-7890",
+                            isActive = true
                         },
                         new
                         {
@@ -458,7 +505,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "jennifer.taylor@example.com",
                             FirstName = "Jennifer",
                             LastName = "Taylor",
-                            PhoneNumber = "(555) 567-8901"
+                            PhoneNumber = "(555) 567-8901",
+                            isActive = true
                         },
                         new
                         {
@@ -467,7 +515,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "michael.martinez@example.com",
                             FirstName = "Michael",
                             LastName = "Martinez",
-                            PhoneNumber = "(555) 678-9012"
+                            PhoneNumber = "(555) 678-9012",
+                            isActive = true
                         },
                         new
                         {
@@ -476,7 +525,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "barbara.hernandez@example.com",
                             FirstName = "Barbara",
                             LastName = "Hernandez",
-                            PhoneNumber = "(555) 789-0123"
+                            PhoneNumber = "(555) 789-0123",
+                            isActive = true
                         },
                         new
                         {
@@ -485,7 +535,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "john.lopez@example.com",
                             FirstName = "John",
                             LastName = "Lopez",
-                            PhoneNumber = "(555) 890-1234"
+                            PhoneNumber = "(555) 890-1234",
+                            isActive = true
                         },
                         new
                         {
@@ -494,7 +545,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "jessica.gonzalez@example.com",
                             FirstName = "Jessica",
                             LastName = "Gonzalez",
-                            PhoneNumber = "(555) 901-2345"
+                            PhoneNumber = "(555) 901-2345",
+                            isActive = true
                         },
                         new
                         {
@@ -503,7 +555,8 @@ namespace BurgerAppDataAccess.Migrations
                             Email = "jason.taylor@example.com",
                             FirstName = "Jason",
                             LastName = "Taylor",
-                            PhoneNumber = "(555) 012-3456"
+                            PhoneNumber = "(555) 012-3456",
+                            isActive = true
                         });
                 });
 

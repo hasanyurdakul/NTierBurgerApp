@@ -127,6 +127,9 @@
   <data name="burger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\burger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="burger_greyscale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\burger_greyscale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ConfirmOrder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ConfirmOrder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

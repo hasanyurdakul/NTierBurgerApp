@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BurgerAppPresentation.ProductScreenAndContents;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +50,13 @@ namespace BurgerAppPresentation
             BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
             burgerAppOrders.Show();
 
+        }
+
+        private void btn_Products_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BurgerAppProducts burgerAppProducts = new BurgerAppProducts();
+            burgerAppProducts.Show();
         }
     }
 }

@@ -93,6 +93,16 @@ namespace BurgerAppPresentation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap burger_greyscale {
+            get {
+                object obj = ResourceManager.GetObject("burger_greyscale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ConfirmOrder {
             get {
                 object obj = ResourceManager.GetObject("ConfirmOrder", resourceCulture);

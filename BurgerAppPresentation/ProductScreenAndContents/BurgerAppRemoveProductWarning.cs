@@ -1,5 +1,6 @@
 ﻿using BurgerAppDataAccess;
 using BurgerAppDomain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,44 +11,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BurgerAppPresentation
+namespace BurgerAppPresentation.ProductScreenAndContents
 {
-    public partial class BurgerAppRemoveOrderWarning : Form
+    public partial class BurgerAppRemoveProductWarning : Form
     {
         AppDbContext _context = new AppDbContext();
-        int _orderId;
-        Order _order;
-        public BurgerAppRemoveOrderWarning(int orderId)
+        Product _product;
+        public BurgerAppRemoveProductWarning(Product product)
         {
             InitializeComponent();
-            _orderId = orderId;
+            _product = product;
         }
 
-        private void BurgerAppRemoveOrderWarning_Load(object sender, EventArgs e)
-        {
-            _order = GetOrder(_orderId);    
-        }
-        public Order GetOrder(int customerId)
-        {
-            var order = _context.Orders.FirstOrDefault(x => x.OrderId == _orderId);
-            return order;
-        }
         private void btn_Apply_Click(object sender, EventArgs e)
         {
-            SuccessPopUp();
 
+            RemoveProduct();
+            SuccessPopUp();
             this.Hide();
-            BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
-            burgerAppOrders.Show();
+            BurgerAppProducts burgerAppProducts = new BurgerAppProducts();
+            burgerAppProducts.Show();
+        }
+        public void RemoveProduct()
+        {
+            _context.Products.Remove(_product);
+            _context.SaveChanges();
         }
 
         private void btn_Discard_Click(object sender, EventArgs e)
         {
             DiscardPopUp();
-
             this.Hide();
-            BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
-            burgerAppOrders.Show();
+            BurgerAppProducts burgerAppProducts = new BurgerAppProducts();
+            burgerAppProducts.Show();
         }
 
         private void SuccessPopUp()
@@ -57,12 +53,6 @@ namespace BurgerAppPresentation
         private void DiscardPopUp()
         {
             MessageBox.Show("Deletion Canceled!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        public void RemoveOrder()
-        {
-            _context.Remove(_order);
-            _context.SaveChanges();
         }
 
     }
