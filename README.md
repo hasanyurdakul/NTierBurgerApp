@@ -22,8 +22,6 @@ Customer, Order and Management System
 Wissen Burger is a desktop application where we can manage customers, products and orders. You can enter new orders, products and customers or update and delete existing ones.
  ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 - [.NET Core](https://dotnet.microsoft.com/en-us/)
 - [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/)
 - [SQL Server](https://www.microsoft.com/tr-tr/sql-server/sql-server-2022)
