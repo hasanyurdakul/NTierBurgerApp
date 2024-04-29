@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BurgerAppSplashScreen));
             timer_Splash = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             ClientSize = new Size(600, 600);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BurgerAppSplashScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BurgerAppSplashScreen";

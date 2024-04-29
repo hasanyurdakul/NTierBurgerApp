@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>WB.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="WB.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BurgerAppBusiness\BurgerAppBusiness.csproj" />

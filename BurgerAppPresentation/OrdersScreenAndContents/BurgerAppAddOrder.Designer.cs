@@ -51,6 +51,8 @@
             chbox_Mayonnaise = new CheckBox();
             chbox_Ketchup = new CheckBox();
             pbl_OrderId = new Panel();
+            lbl_CustomerId = new Label();
+            lbl_CustomerIdTitle = new Label();
             lbl_OrderId = new Label();
             lbl_OrderIdTitle = new Label();
             imgList_Products = new ImageList(components);
@@ -63,8 +65,6 @@
             sauce1 = new ColumnHeader();
             sauce2 = new ColumnHeader();
             sauce3 = new ColumnHeader();
-            lbl_CustomerIdTitle = new Label();
-            lbl_CustomerId = new Label();
             pnl_Title.SuspendLayout();
             pnl_TotalPrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbox_ProductImage).BeginInit();
@@ -394,6 +394,28 @@
             pbl_OrderId.Size = new Size(210, 64);
             pbl_OrderId.TabIndex = 16;
             // 
+            // lbl_CustomerId
+            // 
+            lbl_CustomerId.AutoSize = true;
+            lbl_CustomerId.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lbl_CustomerId.ForeColor = Color.White;
+            lbl_CustomerId.Location = new Point(135, 21);
+            lbl_CustomerId.Name = "lbl_CustomerId";
+            lbl_CustomerId.Size = new Size(46, 21);
+            lbl_CustomerId.TabIndex = 17;
+            lbl_CustomerId.Text = "####";
+            // 
+            // lbl_CustomerIdTitle
+            // 
+            lbl_CustomerIdTitle.AutoSize = true;
+            lbl_CustomerIdTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lbl_CustomerIdTitle.ForeColor = Color.White;
+            lbl_CustomerIdTitle.Location = new Point(3, 21);
+            lbl_CustomerIdTitle.Name = "lbl_CustomerIdTitle";
+            lbl_CustomerIdTitle.Size = new Size(120, 21);
+            lbl_CustomerIdTitle.TabIndex = 16;
+            lbl_CustomerIdTitle.Text = "CUSTOMER ID:";
+            // 
             // lbl_OrderId
             // 
             lbl_OrderId.AutoSize = true;
@@ -497,28 +519,6 @@
             sauce3.Tag = "sauce3";
             sauce3.Text = "Third Sauce";
             sauce3.Width = 80;
-            // 
-            // lbl_CustomerIdTitle
-            // 
-            lbl_CustomerIdTitle.AutoSize = true;
-            lbl_CustomerIdTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lbl_CustomerIdTitle.ForeColor = Color.White;
-            lbl_CustomerIdTitle.Location = new Point(3, 21);
-            lbl_CustomerIdTitle.Name = "lbl_CustomerIdTitle";
-            lbl_CustomerIdTitle.Size = new Size(120, 21);
-            lbl_CustomerIdTitle.TabIndex = 16;
-            lbl_CustomerIdTitle.Text = "CUSTOMER ID:";
-            // 
-            // lbl_CustomerId
-            // 
-            lbl_CustomerId.AutoSize = true;
-            lbl_CustomerId.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lbl_CustomerId.ForeColor = Color.White;
-            lbl_CustomerId.Location = new Point(135, 21);
-            lbl_CustomerId.Name = "lbl_CustomerId";
-            lbl_CustomerId.Size = new Size(46, 21);
-            lbl_CustomerId.TabIndex = 17;
-            lbl_CustomerId.Text = "####";
             // 
             // BurgerAppAddOrder
             // 

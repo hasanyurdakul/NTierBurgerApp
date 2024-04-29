@@ -210,6 +210,7 @@
             Controls.Add(btn_Orders);
             Controls.Add(btn_Customers);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BurgerAppDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BurgerAppDashboard";
