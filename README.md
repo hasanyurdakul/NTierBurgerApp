@@ -1,59 +1,3 @@
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 <br/>
 <div align="center">
 <a href="https://github.com/ShaanCoding/ReadME-Generator">
@@ -92,7 +36,6 @@ To try the project on your local machine, follow the given instructions below.
 2. Download SQL Server
  ### Installation
 
-
 1. Clone the repo
    ```
    git clone https://github.com/hasanyurdakul/NTierBurgerApp.git
@@ -100,7 +43,8 @@ To try the project on your local machine, follow the given instructions below.
 2. Navigate to  
  `/NTierBurgerApp/BurgerAppDataAccess/AppDbContext.cs`
 3. Modify the `OnConfiguring` method according to your connection string.
-4.Run it.
+4. Run it.
+   
 
  ## License
 
