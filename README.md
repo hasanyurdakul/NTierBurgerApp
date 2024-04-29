@@ -5,7 +5,7 @@
 </a>
 <h3 align="center">N - Tier Burger App</h3>
 <p align="center">
-Customer, Order and Management System
+Customer, Order and Product Management System
 
 <br/>
 <br/>
