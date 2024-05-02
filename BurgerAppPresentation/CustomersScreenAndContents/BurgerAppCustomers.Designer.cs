@@ -34,21 +34,21 @@
             pnl_Title = new Panel();
             lbl_Title = new Label();
             dgv_Customers = new DataGridView();
-            pnl_DataGridView = new Panel();
-            btn_AddCustomer = new Button();
-            btn_RemoveCustomer = new Button();
-            btn_EditCustomer = new Button();
-            customerBindingSource = new BindingSource(components);
             customerIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             firstNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lastNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             phoneNumberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             addressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            customerBindingSource = new BindingSource(components);
+            pnl_DataGridView = new Panel();
+            btn_AddCustomer = new Button();
+            btn_RemoveCustomer = new Button();
+            btn_EditCustomer = new Button();
             pnl_Title.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Customers).BeginInit();
-            pnl_DataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
+            pnl_DataGridView.SuspendLayout();
             SuspendLayout();
             // 
             // btn_Back
@@ -108,8 +108,54 @@
             dgv_Customers.Name = "dgv_Customers";
             dgv_Customers.ReadOnly = true;
             dgv_Customers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_Customers.Size = new Size(658, 657);
+            dgv_Customers.Size = new Size(658, 515);
             dgv_Customers.TabIndex = 3;
+            // 
+            // customerIdDataGridViewTextBoxColumn
+            // 
+            customerIdDataGridViewTextBoxColumn.DataPropertyName = "CustomerId";
+            customerIdDataGridViewTextBoxColumn.HeaderText = "CustomerId";
+            customerIdDataGridViewTextBoxColumn.Name = "customerIdDataGridViewTextBoxColumn";
+            customerIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneNumberDataGridViewTextBoxColumn
+            // 
+            phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
+            phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
+            phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+            phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // customerBindingSource
+            // 
+            customerBindingSource.DataSource = typeof(BurgerAppDomain.Customer);
             // 
             // pnl_DataGridView
             // 
@@ -117,7 +163,7 @@
             pnl_DataGridView.Controls.Add(dgv_Customers);
             pnl_DataGridView.Location = new Point(0, 27);
             pnl_DataGridView.Name = "pnl_DataGridView";
-            pnl_DataGridView.Size = new Size(658, 657);
+            pnl_DataGridView.Size = new Size(658, 515);
             pnl_DataGridView.TabIndex = 4;
             // 
             // btn_AddCustomer
@@ -183,52 +229,6 @@
             btn_EditCustomer.UseVisualStyleBackColor = false;
             btn_EditCustomer.Click += btn_EditCustomer_Click;
             // 
-            // customerBindingSource
-            // 
-            customerBindingSource.DataSource = typeof(BurgerAppDomain.Customer);
-            // 
-            // customerIdDataGridViewTextBoxColumn
-            // 
-            customerIdDataGridViewTextBoxColumn.DataPropertyName = "CustomerId";
-            customerIdDataGridViewTextBoxColumn.HeaderText = "CustomerId";
-            customerIdDataGridViewTextBoxColumn.Name = "customerIdDataGridViewTextBoxColumn";
-            customerIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phoneNumberDataGridViewTextBoxColumn
-            // 
-            phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
-            phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
-            phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
-            phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            addressDataGridViewTextBoxColumn.HeaderText = "Address";
-            addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            addressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // BurgerAppCustomers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -249,8 +249,8 @@
             pnl_Title.ResumeLayout(false);
             pnl_Title.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Customers).EndInit();
-            pnl_DataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)customerBindingSource).EndInit();
+            pnl_DataGridView.ResumeLayout(false);
             ResumeLayout(false);
         }
 

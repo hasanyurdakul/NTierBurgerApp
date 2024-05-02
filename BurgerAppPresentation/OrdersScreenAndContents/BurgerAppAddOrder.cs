@@ -35,7 +35,7 @@ namespace BurgerAppPresentation
             removeButtonStateSetter();
             orderIdSetter();
             customerIdSetter();
-            cmbox_Products.SelectedItem = cmbox_Products.Items[0];
+            cmboxDefaultStateSetter();
         }
 
         private void cmbox_Products_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,8 +61,6 @@ namespace BurgerAppPresentation
             removeButtonStateSetter();
             totalPriceCalculator();
         }
-
-
 
         private void btn_RemoveBasket_Click(object sender, EventArgs e)
         {
@@ -94,7 +92,6 @@ namespace BurgerAppPresentation
 
             }
         }
-        
         private void populateComboBox()
         {
             var productNames = _context.Products.Select(x => x.Name).ToList();
@@ -312,10 +309,14 @@ namespace BurgerAppPresentation
                 _context.OrderDetails.Add(orderDetail);
             }
             _context.SaveChanges();
-            MessageBox.Show("Order Created!","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Order Created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Hide();
-            BurgerAppOrders burgerAppOrders = new BurgerAppOrders();    
+            BurgerAppOrders burgerAppOrders = new BurgerAppOrders();
             burgerAppOrders.Show();
+        }
+        private void cmboxDefaultStateSetter()
+        {
+            cmbox_Products.SelectedItem = cmbox_Products.Items[0];
         }
 
     }
