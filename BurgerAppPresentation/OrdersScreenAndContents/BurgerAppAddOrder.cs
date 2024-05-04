@@ -271,6 +271,7 @@ namespace BurgerAppPresentation
                 int sizePriceDifference = size.PriceDifference;
                 int lvItemPrice = unitPrice + sizePriceDifference;
                 totalPrice += lvItemPrice;
+
             }
 
             lbl_TotalPrice.Text = totalPrice.ToString();
